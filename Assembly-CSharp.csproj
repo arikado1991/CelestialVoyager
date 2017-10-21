@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{D9D0CE20-F84F-80F5-268E-0EFFADCA3C12}</ProjectGuid>
+    <ProjectGuid>{C8FD708D-CD75-11F6-09AB-3EFB51C9D362}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -51,12 +51,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\BackgroundScrollingScript.cs" />
-     <Compile Include="Assets\CameraScript.cs" />
-     <Compile Include="Assets\GravityFieldScript.cs" />
+     <Compile Include="Assets\Scripts\BackgroundScrollingScript.cs" />
+     <Compile Include="Assets\Scripts\CameraScript.cs" />
      <Compile Include="Assets\Scripts\GameOptionsScript.cs" />
      <Compile Include="Assets\Scripts\GamePlayInfoScript.cs" />
      <Compile Include="Assets\Scripts\GamePlayManagerScript.cs" />
+     <Compile Include="Assets\Scripts\GravityFieldScript.cs" />
      <Compile Include="Assets\Scripts\JunkForReference\BacteriaManagerScript.cs" />
      <Compile Include="Assets\Scripts\JunkForReference\BacteriaSpawner.cs" />
      <Compile Include="Assets\Scripts\JunkForReference\CameraFixedResolutionScript.cs" />
@@ -65,7 +65,7 @@
      <Compile Include="Assets\Scripts\PlanetGravityScript.cs" />
      <Compile Include="Assets\Scripts\PopUpManagerScript.cs" />
      <Compile Include="Assets\Scripts\SpaceshipMovementScript.cs" />
-     <Compile Include="Assets\TimerScript.cs" />
+     <Compile Include="Assets\Scripts\TimerScript.cs" />
  <Reference Include="UnityEngine.Analytics">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/UnityAnalytics/UnityEngine.Analytics.dll</HintPath>
  </Reference>
