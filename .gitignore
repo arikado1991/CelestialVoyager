@@ -4,5 +4,5 @@ Build/.DS_Store
 *.csproj
 *.meta
 *.DS_Store
-Library/
+/Library/
 Temp/
