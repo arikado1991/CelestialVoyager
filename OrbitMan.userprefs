@@ -1,0 +1,14 @@
+﻿<Properties StartupItem="Assembly-CSharp.csproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/PlanetGravityScript.cs">
+    <Files>
+      <File FileName="Assets/SpaceshipMovementScript.cs" Line="58" Column="5" />
+      <File FileName="Assets/PlanetGravityScript.cs" Line="70" Column="72" />
+      <File FileName="Assets/Scripts/JunkForReference/GameOptionsScript.cs" Line="26" Column="63" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
