@@ -1,9 +1,9 @@
 
-Build/
+Build
 *.json
 *.csproj
 *.meta
 *.DS_Store
-Library/
-Temp/
+Library
+Temp
 *.sln
