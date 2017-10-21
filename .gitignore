@@ -3,5 +3,6 @@ Build/.DS_Store
 *.json
 *.csproj
 *.meta
+*.DS_Store
 Library/
 Temp/
