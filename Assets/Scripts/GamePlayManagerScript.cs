@@ -9,11 +9,20 @@ public class GamePlayManagerScript : MonoBehaviour {
 
 	GamePlayInfoScript infoBoard;
 	PopUpManagerScript popUpManager;
-	GameObject player;
-	GameObject fishSpawner;
+
+	public TimerScript timer;
+	public EndLevelScoreSystemScript scoreSystem;
+
+	public GameObject player;
+
 
 
 	bool isPlayable;
+
+	public static event EventManagerScript.GameDelegate OnGameOverEvent;
+	public static event EventManagerScript.GameDelegate OnGameRestartEvent;
+	public static event EventManagerScript.GameDelegate OnEndLevelEvent;
+	public static event EventManagerScript.SetValue <bool> OnSetGameActiveEvent;
 
 
 
@@ -24,58 +33,64 @@ public class GamePlayManagerScript : MonoBehaviour {
 	void Start () {
 		infoBoard = GameObject.FindObjectOfType<GamePlayInfoScript> ();
 		popUpManager = GameObject.FindObjectOfType<PopUpManagerScript> ();
-		popUpManager.ShowPopUp ("Space Voyager hooray!", "Are you ready to explore the mysterious cosmos?", "Where's my insurrance?");
+		popUpManager.ShowPopUp ("Welcome to Space Voyager!", "Are you ready to explore the cosmos and beyond?", "Does my insurrance cover this?");
 
 		player = GameObject.FindGameObjectWithTag ("Player");
+		timer = GameObject.FindObjectOfType <TimerScript> ();
+		scoreSystem = GameObject.FindObjectOfType <EndLevelScoreSystemScript> ();
 		//player.SetActive (false);
-		fishSpawner = GameObject.Find ("FishSpawner");
+		//fishSpawner = GameObject.Find ("FishSpawner");
 
 		ActivateGamePlay (false);
-	}
-	
 
-	public void UpdateInfoBoard (bool is_score_changed = false) {
-		infoBoard.SetTime (Mathf.RoundToInt(remainingTime));
-		if (is_score_changed)
-			infoBoard.SetScore (score);
+		SpaceshipInfoScript.OnFuelEmptyEvent += GameOver;
+		FinishedPlanetScript.OnReachingDestinationEvent += FinishLevel;
 
 	}
 
-	public void UpdateScore (int newScore){
-		score += newScore;
-		UpdateInfoBoard (true);
-	
-	}
-
-	// Update is called once per frame	
-	void Update(){
-		if (!isPlayable)
-			return;
-		
-		remainingTime -= Time.deltaTime;
-		UpdateInfoBoard ();
-
+	void OnEnable(){
+		SpaceshipInfoScript.OnFuelEmptyEvent += GameOver;
+		FinishedPlanetScript.OnReachingDestinationEvent += FinishLevel;
 
 	}
+
+	void OnDisable() {
+		SpaceshipInfoScript.OnFuelEmptyEvent -= GameOver;
+		FinishedPlanetScript.OnReachingDestinationEvent -= FinishLevel;
+	}
+
+
 
 	void ActivateGamePlay(bool is_activated) {
-		UpdateInfoBoard (true);
+		
 		isPlayable = is_activated;
-	//	player.SetActive (is_activated);
-		fishSpawner.SetActive (is_activated);
+		player.SetActive (is_activated);
+		OnSetGameActiveEvent (is_activated);
+
 	}
 
 	public void Restart(){
+		OnGameRestartEvent ();
 		popUpManager.HidePopUp ();
 		score = 0;
-		player.GetComponent <SpaceshipMovementScript> ().Restart();
-		remainingTime = GameOptionsScript.GAME_DURATION;
-		infoBoard = GameObject.FindObjectOfType<GamePlayInfoScript>();
+		//remainingTime = GameOptionsScript.GAME_DURATION;
+		//infoBoard = GameObject.FindObjectOfType<GamePlayInfoScript>();
 		ActivateGamePlay (true);
 
 	}
 
 	public void GameOver() {
+		OnSetGameActiveEvent (false);
+		//OnGameOverEvent ();
 		popUpManager.ShowPopUp ("Game Over!", "You are out of fuel!\n You're now a cold corpse that wanders the universe for all eternity!", "Restart");
+	}
+
+	public void FinishLevel() {
+		OnSetGameActiveEvent (false);
+		OnEndLevelEvent ();
+
+		popUpManager.ShowPopUp ("Level finished!", "Fuel: " + (int)player.GetComponent<SpaceshipInfoScript> ().fuel + 
+			" lt\nTime: " +  timer.timeStr + "\nScore: " + scoreSystem.endLvScore, 
+			"Next Level");
 	}
 }

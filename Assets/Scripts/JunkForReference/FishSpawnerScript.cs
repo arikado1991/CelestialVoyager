@@ -16,7 +16,7 @@ public class FishSpawnerScript : MonoBehaviour {
 		spawning_cool_down_time -= Time.deltaTime;
 		if (spawning_cool_down_time <= 0) {
 			SpawnFish ();
-			spawning_cool_down_time = GameOptionsScript.SPAWNING_COOLDOWN_TIME - Random.value * 3;
+//			spawning_cool_down_time = GameOptionsScript.SPAWNING_COOLDOWN_TIME - Random.value * 3;
 		}
 	}
 

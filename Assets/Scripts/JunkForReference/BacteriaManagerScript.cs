@@ -30,7 +30,7 @@ public class BacteriaManagerScript : MonoBehaviour {
 		occupyingBacteria = new Dictionary<int, GameObject> ();
 	}
 	
-	// Update is called once per frame
+/*	// Update is called once per frame
 	void Update () {
 		spawningCooldown -= Time.deltaTime;
 		if (spawningCooldown <= 0 && bacteriaCount < GameOptionsScript.MAX_BACTERIA_COUNT)
@@ -67,6 +67,6 @@ public class BacteriaManagerScript : MonoBehaviour {
 				spawningCooldown = GameOptionsScript.SPAWNING_COOLDOWN_TIME - Mathf.Min(bacteriaCount,3);
 				break;
 			}
-	}
+	}*/
 }
 

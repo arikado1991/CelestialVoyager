@@ -20,9 +20,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4095442442189600}
   - component: {fileID: 50762560634212308}
-  - component: {fileID: 58271752948342984}
   - component: {fileID: 212608062543103742}
-  - component: {fileID: 114940656933000186}
+  - component: {fileID: 70781956712256348}
+  - component: {fileID: 114335620804197260}
   - component: {fileID: 114908875720419116}
   m_Layer: 0
   m_Name: Hook
@@ -39,7 +39,7 @@ Transform:
   m_GameObject: {fileID: 1903647522106140}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.05, y: 0.05, z: 0.1}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -64,8 +64,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!58 &58271752948342984
-CircleCollider2D:
+--- !u!70 &70781956712256348
+CapsuleCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -77,8 +77,19 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 2.5
+  m_Size: {x: 1.31, y: 3.09}
+  m_Direction: 0
+--- !u!114 &114335620804197260
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1903647522106140}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67089dbe09b134941ae0da3ca2652ad2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114908875720419116
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -90,20 +101,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5daae3bce0fdf4dc5ace98ce5f6d16da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mass: 10
-  orbitting: 0
-  remainingFuel: 0
---- !u!114 &114940656933000186
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1903647522106140}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0c55ec72eeaa74d059beb65130d87281, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  shipInfo: {fileID: 0}
 --- !u!212 &212608062543103742
 SpriteRenderer:
   m_ObjectHideFlags: 1

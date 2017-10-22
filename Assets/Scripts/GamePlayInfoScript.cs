@@ -7,7 +7,14 @@ public class GamePlayInfoScript: MonoBehaviour {
 
 	public Text score, time;
 
-	public Slider fuelBar;
+	Slider fuelBar;
+
+	void OnEnable() {
+		SpaceshipInfoScript.OnFuelAmountUpdateEvent += SetFuelBar;
+	}
+	void OnDisable() {
+		SpaceshipInfoScript.OnFuelAmountUpdateEvent -= SetFuelBar;
+	}
 
 	// Use this for initialization
 	void Awake () {
@@ -20,16 +27,11 @@ public class GamePlayInfoScript: MonoBehaviour {
 		}
 	}
 
-	public void  SetScore (int newScore){
-		score.text = "Score\n" + newScore.ToString ();
-	}
 
-	public void  SetTime (int newTime){
-		time.text = "Time\n" + newTime.ToString ();
-	}
 
-	public void SetFuel (int newFuelAmount){
-		fuelBar.value = newFuelAmount;
+
+	public void SetFuelBar (float newFuelAmount){
+		fuelBar.value = (newFuelAmount > 0) ? (int)newFuelAmount : 0;
 	
 	}
 	// Update is called once per frame

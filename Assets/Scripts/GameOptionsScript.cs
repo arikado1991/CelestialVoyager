@@ -14,11 +14,7 @@ public class GameOptionsScript : MonoBehaviour {
 	public static float WATER_LEVEL;
 	public static float MOVEMENT_SCALE;
 
-	public const float FISH_SPEED = 2;
-	public const float MAX_COOLDOWN_TO_CHANGE_SPEED = 4;
-	public const float SPAWNING_COOLDOWN_TIME = 3.0f;
-	public const int MAX_BACTERIA_COUNT = 10;
-	public const float BACTERIA_INVULNARABLE_COOLDOWN = .5f;
+
 	public const int SCREEN_HEIGHT_IN_UNIT = 8;
 	public static float UNIT_TO_PIXEL;
 	public const float GAME_DURATION = 60.0f;
@@ -27,9 +23,8 @@ public class GameOptionsScript : MonoBehaviour {
 	static public float MAX_FUEL_AMOUNT = 100.0f;
 
 	public static float G_CONSTANT = 20f * Mathf.Pow (2, -26f);
-	public static float MAX_VELOCITY = 1.0f;
+	public static float MAX_VELOCITY = 3.0f;
 
-	public static float UPDATE_RATE = 1f;
 
 //	public  AudioClip[] BRUSHING_SOUND_LIBRARY ;
 

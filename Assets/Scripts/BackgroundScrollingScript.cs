@@ -4,17 +4,25 @@ using UnityEngine;
 
 public class BackgroundScrollingScript : MonoBehaviour {
 
-	SpaceshipMovementScript spaceship;
+
 
 	void Start() {
-		spaceship = GameObject.FindObjectOfType <SpaceshipMovementScript> ();
 
+
+	}
+
+	void OnEnable(){
+		SpaceshipMovementScript.OnSpaceshipChangePosition += FollowSpaceship;
 	}
 	// Update is called once per frame
 	void Update () {
+
+	}
+
+	void FollowSpaceship(Vector3 shipPosition){
 		MeshRenderer meshRenderer = GetComponent<MeshRenderer> ();
 		Material material = meshRenderer.material;
-		transform.position = spaceship.transform.position + Vector3.forward * 10;
-		material.mainTextureOffset = (Vector2) spaceship.transform.position * .1f;
+		transform.position = shipPosition + Vector3.forward * 10;
+		material.mainTextureOffset = (Vector2) shipPosition * .1f;
 	}
 }

@@ -78,7 +78,7 @@ PlayerSettings:
   resizableWindow: 0
   useMacAppStoreValidation: 0
   macAppStoreCategory: public.app-category.games
-  gpuSkinning: 0
+  gpuSkinning: 1
   graphicsJobs: 0
   xboxPIXTextureCapture: 0
   xboxEnableAvatar: 0
@@ -142,6 +142,7 @@ PlayerSettings:
   resolutionScalingMode: 0
   applicationIdentifier:
     Android: com.MDM12.vietphan
+    iOS: com.TeamOrbit.CelestialVoyager
   buildNumber: {}
   AndroidBundleVersionCode: 1
   AndroidMinSdkVersion: 16
@@ -161,7 +162,7 @@ PlayerSettings:
     serializedVersion: 2
     m_Bits: 238
   iPhoneSdkVersion: 988
-  iOSTargetOSVersionString: 
+  iOSTargetOSVersionString: 7.0
   tvOSSdkVersion: 0
   tvOSRequireExtendedGameController: 0
   tvOSTargetOSVersionString: 
@@ -210,10 +211,10 @@ PlayerSettings:
   metalEditorSupport: 0
   metalAPIValidation: 1
   iOSRenderExtraFrameOnPause: 0
-  appleDeveloperTeamID: 
-  iOSManualSigningProvisioningProfileID: 
+  appleDeveloperTeamID: 73MJTG6BWD
+  iOSManualSigningProvisioningProfileID: viet_phan@thecdm.ca (73MJTG6BWD)
   tvOSManualSigningProvisioningProfileID: 
-  appleEnableAutomaticSigning: 0
+  appleEnableAutomaticSigning: 1
   AndroidTargetDevice: 0
   AndroidSplashScreenScale: 0
   androidSplashScreen: {fileID: 0}
@@ -228,7 +229,13 @@ PlayerSettings:
     banner: {fileID: 0}
   androidGamepadSupportLevel: 0
   resolutionDialogBanner: {fileID: 0}
-  m_BuildTargetIcons: []
+  m_BuildTargetIcons:
+  - m_BuildTarget: 
+    m_Icons:
+    - serializedVersion: 2
+      m_Icon: {fileID: 2800000, guid: 89092762c37eb428db7b2b1ba2be88d8, type: 3}
+      m_Width: 128
+      m_Height: 128
   m_BuildTargetBatching: []
   m_BuildTargetGraphicsAPIs: []
   m_BuildTargetVRSettings: []

@@ -4,27 +4,34 @@ using UnityEngine;
 
 public class SpaceshipMovementScript : MonoBehaviour {
 
+	public enum SpaceObjectType {PLANET, SPACEJUNK, METEOR, ALIEN};
 
 
 	bool isActive;
-	public float mass = Mathf.Pow(1, -20);
+	public SpaceshipInfoScript shipInfo;
 
-	public float remainingFuel;
+	public static EventManagerScript.GetValue <Vector3> OnSpaceshipChangePosition;
 
 
 	// Use this for initialization
 	void Start () {
+		shipInfo = GameObject.FindObjectOfType <SpaceshipInfoScript> ();
+
 		Restart ();
+
 	
 	}
 
+	void OnEnable (){
+		GamePlayManagerScript.OnGameRestartEvent += Restart;
 
 
-	// Update is called once per frame
+	}
+
 	void Update () {
 		if (!isActive)
 			return;
-		
+
 		Rigidbody2D rigidBody = GetComponent<Rigidbody2D> ();
 
 		if (Input.GetMouseButton (0)) {
@@ -38,34 +45,51 @@ public class SpaceshipMovementScript : MonoBehaviour {
 				mousePositionInGame.y 
 			);
 
-
+			Debug.Log ("Force magnitude: " + thruster_force.magnitude);
+			Debug.Log ("Ship info is " + rigidBody != null);
 			rigidBody.AddForce ( thruster_force);
+		//	ApplyForceToShip(thruster_force);
 
-			remainingFuel -= thruster_force.magnitude * Time.deltaTime * 10;
-			GameObject.FindObjectOfType <GamePlayInfoScript> ().BroadcastMessage ("SetFuel", (int)remainingFuel);
+		 	shipInfo.fuel -= thruster_force.magnitude * Time.deltaTime * 10;
+
 
 
 		} 
-			
+
 		transform.rotation = Quaternion.LookRotation (Vector3.forward, rigidBody.velocity);
 
-		if (remainingFuel <= 0)
-			GameObject.FindObjectOfType <GamePlayManagerScript> ().GameOver ();
+		OnSpaceshipChangePosition (transform.position);
 
+	}
+
+
+	void ApplyForceToShip (Vector2 forceVector) {
+		Rigidbody2D rigidBody = GetComponent<Rigidbody2D> ();
+		rigidBody.AddForce ( forceVector);
+	}
+
+	Vector2 LimitMaxSpeed (Vector2 speed) {
+		if (speed.magnitude > GameOptionsScript.MAX_VELOCITY) {
+			speed =  speed.normalized * GameOptionsScript.MAX_VELOCITY;
+		}
+		return speed;
+	}
+
+	// Update is called once per frame
+
+
+
+
+	void Restart(){
+		isActive = true;
+		transform.position = Vector3.zero;
+		GetComponent <Rigidbody2D> ().velocity = Vector3.zero;
 	}
 
 	void OnCollisionEnter2D (Collision2D col) {
 		//death on collision with planet
-		remainingFuel = 0;
+
+
 	}
-
-	public void Restart(){
-		isActive = true;
-		transform.position = Vector3.zero;
-		remainingFuel = GameOptionsScript.MAX_FUEL_AMOUNT;
-		GetComponent <Rigidbody2D> ().velocity = Vector3.zero;
-	}
-
-
 
 }

@@ -7,3 +7,5 @@ Build/
 Library/
 Temp/
 *.sln
+*.userprefs
+Assets/Scripts/JunkForReference/FishSpawnerScript.cs

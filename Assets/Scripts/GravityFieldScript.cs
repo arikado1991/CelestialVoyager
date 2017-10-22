@@ -7,7 +7,7 @@ public class GravityFieldScript : MonoBehaviour {
 	// Use this for initialization
 	PlanetGravityScript 			planet; 
 	Rigidbody2D 					shipRigidBody2D;
-	SpaceshipMovementScript 		ship;
+	SpaceshipInfoScript 		ship;
 	float							orbittingVelocityMagnitude;
 	float 							forceMultiplier;
 
@@ -28,7 +28,7 @@ public class GravityFieldScript : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D col){
 		shipRigidBody2D = col.GetComponent<Rigidbody2D> ();
-		ship = col.GetComponent<SpaceshipMovementScript> ();
+		ship = col.GetComponent<SpaceshipInfoScript> ();
 
 	}
 
