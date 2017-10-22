@@ -30,14 +30,8 @@ public class SpaceshipInfoScript : MonoBehaviour {
 
 	}
 
-	public void AddFuel (float addAmount){
-		p_remainingFuel += addAmount;
-	}
-
 	void Reset () {
-		p_remainingFuel = GameOptionsScript.MAX_FUEL_AMOUNT;
-
-
+		fuel = GameOptionsScript.MAX_FUEL_AMOUNT;
 	}
 
 	void EmptyFuel () {
