@@ -17,6 +17,7 @@ public class TimerScript : MonoBehaviour {
 		timerDisplayText = transform.Find("TimerDisplayText").GetComponent<Text> ();
 	
 		GamePlayManagerScript.OnSetGameActiveEvent += SetActive;
+		GamePlayManagerScript.OnGameRestartEvent += Restart;
 	
 	}
 
