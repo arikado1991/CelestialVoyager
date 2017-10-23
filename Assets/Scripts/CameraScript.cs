@@ -5,16 +5,22 @@ using UnityEngine;
 public class CameraScript : MonoBehaviour {
 
 	// Use this for initialization
-	GameObject player;
 
 	void Start () {
 		transform.position = new Vector3 (0, 0, -10);
-		player = GameObject.Find ("SpaceShip");
+
+	}
+
+	void OnEnable() {
+		SpaceshipMovementScript.OnSpaceshipChangePosition += Follow;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if (player != null)
-			transform.position = player.transform.position + (Vector3.back * 10);
+		
+	}
+
+	void Follow (Vector3 position){
+			transform.position = position + (Vector3.back * 10);
 	}
 }

@@ -63,7 +63,6 @@ public class GamePlayManagerScript : MonoBehaviour {
 
 	void ActivateGamePlay(bool is_activated) {
 		
-		isPlayable = is_activated;
 		player.SetActive (is_activated);
 		OnSetGameActiveEvent (is_activated);
 
@@ -80,13 +79,13 @@ public class GamePlayManagerScript : MonoBehaviour {
 	}
 
 	public void GameOver() {
-		OnSetGameActiveEvent (false);
+		ActivateGamePlay (false);
 		//OnGameOverEvent ();
 		popUpManager.ShowPopUp ("Game Over!", "You are out of fuel!\n You're now a cold corpse that wanders the universe for all eternity!", "Restart");
 	}
 
 	public void FinishLevel() {
-		OnSetGameActiveEvent (false);
+		ActivateGamePlay (false);
 		OnEndLevelEvent ();
 
 		popUpManager.ShowPopUp ("Level finished!", "Fuel: " + (int)player.GetComponent<SpaceshipInfoScript> ().fuel + 

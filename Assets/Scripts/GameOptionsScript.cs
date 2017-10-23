@@ -26,7 +26,6 @@ public class GameOptionsScript : MonoBehaviour {
 	public static float MAX_VELOCITY = 3.0f;
 
 
-//	public  AudioClip[] BRUSHING_SOUND_LIBRARY ;
 
 	public Sprite[] NUMBER_SPRITE;
 
