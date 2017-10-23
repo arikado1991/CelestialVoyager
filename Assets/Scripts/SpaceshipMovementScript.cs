@@ -5,12 +5,14 @@ using UnityEngine;
 public class SpaceshipMovementScript : MonoBehaviour {
 
 	public enum SpaceObjectType {PLANET, SPACEJUNK, METEOR, ALIEN};
+	public enum ExhaustionLevel {NONE, SMALL, LARGE};
 
 
 	bool isActive;
 	public SpaceshipInfoScript shipInfo;
 
 	public static EventManagerScript.GetValue <Vector3> OnSpaceshipChangePosition;
+	public static EventManagerScript.GetValue <ExhaustionLevel> OnChangeExhaustion; 
 
 
 	// Use this for initialization
@@ -37,24 +39,25 @@ public class SpaceshipMovementScript : MonoBehaviour {
 		if (Input.GetMouseButton (0)) {
 
 			Vector2 mousePositionInGame = new Vector2 (
-				(Input.mousePosition.x - GameOptionsScript.SCREEN_CENTER_POINT.x) / GameOptionsScript.UNIT_TO_PIXEL,
-				(Input.mousePosition.y - GameOptionsScript.SCREEN_CENTER_POINT.y) / GameOptionsScript.UNIT_TO_PIXEL);
+				                              (Input.mousePosition.x - GameOptionsScript.SCREEN_CENTER_POINT.x) / GameOptionsScript.UNIT_TO_PIXEL,
+				                              (Input.mousePosition.y - GameOptionsScript.SCREEN_CENTER_POINT.y) / GameOptionsScript.UNIT_TO_PIXEL);
 
 			Vector2 thruster_force = new Vector2 (
-				mousePositionInGame.x, 
-				mousePositionInGame.y 
-			);
+				                         mousePositionInGame.x, 
+				                         mousePositionInGame.y 
+			                         );
 
 			Debug.Log ("Force magnitude: " + thruster_force.magnitude);
 			Debug.Log ("Ship info is " + rigidBody != null);
-			rigidBody.AddForce ( thruster_force);
-		//	ApplyForceToShip(thruster_force);
+			rigidBody.AddForce (thruster_force);
+			//	ApplyForceToShip(thruster_force);
 
-		 	shipInfo.fuel -= thruster_force.magnitude * Time.deltaTime * 10;
+			shipInfo.fuel -= thruster_force.magnitude * Time.deltaTime * 10;
 
-
-
-		} 
+			OnChangeExhaustion ((thruster_force.magnitude < GameOptionsScript.MAX_VELOCITY) ? ExhaustionLevel.SMALL : ExhaustionLevel.LARGE);
+		} else {
+			OnChangeExhaustion (ExhaustionLevel.NONE);
+		}
 
 		transform.rotation = Quaternion.LookRotation (Vector3.forward, rigidBody.velocity);
 
