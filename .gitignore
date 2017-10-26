@@ -1,13 +1,15 @@
 
 Build/
+Assets/Scripts/JunkForReference/
+Library/
+Temp/
+
 *.json
 *.csproj
 *.meta
 *.DS_Store
-Library/
-Temp/
 *.sln
 *.userprefs
-Assets/Scripts/JunkForReference/
 *.ini
+Assets/Sounds/.DS_Store
 Assets/Sounds/.DS_Store
