@@ -9,7 +9,6 @@ public class PlanetGravityScript : MonoBehaviour {
 
 	public float mass = 100;
 	public static EventManagerScript.CollideWithObject OnSpaceshipCollisionWithPlanetEvent;
-	public bool isDestinationPlanet = false;
 
 	void OnTriggerStay2D(Collider2D c){
 

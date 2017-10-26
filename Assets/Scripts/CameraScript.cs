@@ -12,7 +12,13 @@ public class CameraScript : MonoBehaviour {
 	}
 
 	void OnEnable() {
-		SpaceshipMovementScript.OnSpaceshipChangePosition += Follow;
+		SpaceshipMovementScript.OnSpaceshipUpdate += Follow;
+
+	}
+
+	void OnDisable() {
+		SpaceshipMovementScript.OnSpaceshipUpdate -= Follow;
+
 	}
 	
 	// Update is called once per frame
@@ -20,7 +26,12 @@ public class CameraScript : MonoBehaviour {
 		
 	}
 
-	void Follow (Vector3 position){
-			transform.position = position + (Vector3.back * 10);
+	void Follow (Rigidbody2D ship){
+		transform.position = (Vector3) ship.position + (Vector3.back * 
+			Mathf.Min (
+				GameOptionsScript.MIN_CAMERA_DISTANCE + ship.velocity.magnitude , 
+				GameOptionsScript.MAX_CAMERA_DISTANCE));
 	}
+
+
 }

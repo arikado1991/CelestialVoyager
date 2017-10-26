@@ -6,7 +6,7 @@ PlayerSettings:
   serializedVersion: 12
   productGUID: ced6a9e43368743d489801eb2230296f
   AndroidProfiler: 0
-  defaultScreenOrientation: 4
+  defaultScreenOrientation: 3
   targetDevice: 2
   useOnDemandResources: 0
   accelerometerFrequency: 60
@@ -121,7 +121,7 @@ PlayerSettings:
     16:10: 1
     16:9: 1
     Others: 1
-  bundleVersion: 1.0
+  bundleVersion: 1.2
   preloadedAssets: []
   metroInputSource: 0
   m_HolographicPauseOnTrackingLoss: 1
@@ -211,8 +211,8 @@ PlayerSettings:
   metalEditorSupport: 0
   metalAPIValidation: 1
   iOSRenderExtraFrameOnPause: 0
-  appleDeveloperTeamID: 73MJTG6BWD
-  iOSManualSigningProvisioningProfileID: viet_phan@thecdm.ca (73MJTG6BWD)
+  appleDeveloperTeamID: 4Z3EUXPG39
+  iOSManualSigningProvisioningProfileID: phan_t1@denison.edu (JYN3RR9EYY)
   tvOSManualSigningProvisioningProfileID: 
   appleEnableAutomaticSigning: 1
   AndroidTargetDevice: 0
@@ -507,7 +507,8 @@ PlayerSettings:
   webGLUseEmbeddedResources: 0
   webGLUseWasm: 0
   webGLCompressionFormat: 1
-  scriptingDefineSymbols: {}
+  scriptingDefineSymbols:
+    7: GameOptions
   platformArchitecture: {}
   scriptingBackend: {}
   incrementalIl2cppBuild: {}

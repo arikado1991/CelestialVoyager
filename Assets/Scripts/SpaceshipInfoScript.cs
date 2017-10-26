@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class SpaceshipInfoScript : MonoBehaviour {
-	float p_mass = 10;//Mathf.Pow (,20);
+	float p_mass = GameOptionsScript.SHIP_MASS;
 	float p_remainingFuel;
 
 

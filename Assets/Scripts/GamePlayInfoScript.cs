@@ -18,7 +18,7 @@ public class GamePlayInfoScript: MonoBehaviour {
 
 	// Use this for initialization
 	void Awake () {
-		Text[] retrivedTextComponents = GetComponentsInChildren<Text> ();
+	//	Text[] retrivedTextComponents = GetComponentsInChildren<Text> ();
 		//score = retrivedTextComponents [1];
 		//time = retrivedTextComponents [0];
 		fuelBar = transform.Find ("FuelBar").GetComponent<Slider>();

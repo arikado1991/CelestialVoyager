@@ -12,17 +12,21 @@ public class BackgroundScrollingScript : MonoBehaviour {
 	}
 
 	void OnEnable(){
-		SpaceshipMovementScript.OnSpaceshipChangePosition += FollowSpaceship;
+		SpaceshipMovementScript.OnSpaceshipUpdate += FollowSpaceshipAndScrollTextures;
+	}
+
+	void OnDisable(){
+		SpaceshipMovementScript.OnSpaceshipUpdate -= FollowSpaceshipAndScrollTextures;
 	}
 	// Update is called once per frame
 	void Update () {
 
 	}
 
-	void FollowSpaceship(Vector3 shipPosition){
+	void FollowSpaceshipAndScrollTextures(Rigidbody2D ship){
 		MeshRenderer meshRenderer = GetComponent<MeshRenderer> ();
 		Material material = meshRenderer.material;
-		transform.position = shipPosition + Vector3.forward * 10;
-		material.mainTextureOffset = (Vector2) shipPosition * .1f;
+		transform.position = (Vector3) ship.position + Vector3.forward * 10;
+		material.mainTextureOffset = (Vector2) ship.position * .05f;
 	}
 }

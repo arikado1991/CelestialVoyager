@@ -20,10 +20,15 @@ public class EndLevelScoreSystemScript : MonoBehaviour {
 		GamePlayManagerScript.OnGameRestartEvent += ResetScore;
 	}
 
+	void OnDisable () {
+		GamePlayManagerScript.OnEndLevelEvent  -= GetEndLevelScore;
+		GamePlayManagerScript.OnGameRestartEvent -= ResetScore;
+	}
+
 	void GetEndLevelScore(){
-		p_endLevelScore =
+		p_endLevelScore = Mathf.Max (0,
 			(int) (gameManager.player.GetComponent <SpaceshipInfoScript>().fuel * 10
-			-	gameManager.timer.time);
+				-	gameManager.timer.time * GameOptionsScript.TIME_PENALTY_PER_SECOND));
 	}
 
 	void ResetScore() {

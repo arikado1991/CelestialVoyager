@@ -11,17 +11,14 @@ public class SpaceshipMovementScript : MonoBehaviour {
 	bool isActive;
 	public SpaceshipInfoScript shipInfo;
 
-	public static EventManagerScript.GetValue <Vector3> OnSpaceshipChangePosition;
+	public static EventManagerScript.GetValue <Rigidbody2D> OnSpaceshipUpdate;
+
 	public static EventManagerScript.GetValue <ExhaustionLevel> OnChangeExhaustion; 
 
 
 	// Use this for initialization
 	void Start () {
 		shipInfo = GameObject.FindObjectOfType <SpaceshipInfoScript> ();
-
-		Restart ();
-
-	
 	}
 
 	void OnEnable (){
@@ -45,23 +42,22 @@ public class SpaceshipMovementScript : MonoBehaviour {
 			Vector2 thruster_force = new Vector2 (
 				                         mousePositionInGame.x, 
 				                         mousePositionInGame.y 
-			                         );
+			) * GameOptionsScript.FORCE_MULTIPLIER;
 
-			Debug.Log ("Force magnitude: " + thruster_force.magnitude);
-			Debug.Log ("Ship info is " + rigidBody != null);
 			rigidBody.AddForce (thruster_force);
-			//	ApplyForceToShip(thruster_force);
 
-			shipInfo.fuel -= thruster_force.magnitude * Time.deltaTime * 10;
+			shipInfo.fuel -= thruster_force.magnitude * Time.deltaTime * GameOptionsScript.FUEL_USAGE_MULTIPLIER;
 
-			OnChangeExhaustion ((thruster_force.magnitude < GameOptionsScript.MAX_VELOCITY) ? ExhaustionLevel.SMALL : ExhaustionLevel.LARGE);
+			OnChangeExhaustion (
+				(thruster_force.magnitude < GameOptionsScript.MAX_VELOCITY) ? ExhaustionLevel.SMALL : ExhaustionLevel.LARGE);
 		} else {
 			OnChangeExhaustion (ExhaustionLevel.NONE);
 		}
 
 		transform.rotation = Quaternion.LookRotation (Vector3.forward, rigidBody.velocity);
 
-		OnSpaceshipChangePosition (transform.position);
+		OnSpaceshipUpdate (rigidBody);
+
 
 	}
 
@@ -77,10 +73,6 @@ public class SpaceshipMovementScript : MonoBehaviour {
 		}
 		return speed;
 	}
-
-	// Update is called once per frame
-
-
 
 
 	void Restart(){
