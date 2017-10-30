@@ -24,15 +24,21 @@ public class GamePlayManagerScript : MonoBehaviour {
 	void Start () {
 		infoBoard = GameObject.FindObjectOfType<GamePlayInfoScript> ();
 		popUpManager = GameObject.FindObjectOfType<PopUpManagerScript> ();
-		popUpManager.ShowPopUp ("Welcome to Space Voyager!", "Are you ready to explore the cosmos and beyond?", "Does my insurance cover this?");
-
 		player = GameObject.FindGameObjectWithTag ("Player");
+
+		popUpManager.SetPopUp ("Welcome to Space Voyager!", "Are you ready to explore the cosmos and beyond?");
+		popUpManager.SetButtonFunction (0, "Um .. no?", Restart);
+		popUpManager.ShowPopUp (true);
+		Debug.Log ("Show pop up at the beginning");
+		Debug.Log (player != null);
 		timer = GameObject.FindObjectOfType <TimerScript> ();
 		scoreSystem = GameObject.FindObjectOfType <EndLevelScoreSystemScript> ();
 
 		ActivateGamePlay (false);
 
 	}
+
+
 
 	void OnEnable(){
 		SpaceshipInfoScript.OnFuelEmptyEvent += GameOver;
@@ -51,34 +57,43 @@ public class GamePlayManagerScript : MonoBehaviour {
 		
 		player.SetActive (is_activated);
 		OnSetGameActiveEvent (is_activated);
+		Debug.Log ("Show pop up:" + is_activated);
 
 	}
 
 	public void Restart(){
 		OnGameRestartEvent ();
-		popUpManager.HidePopUp ();
+		popUpManager.ShowPopUp (false);
 		ActivateGamePlay (true);
 
 	}
 
 	public void GameOver() {
 		ActivateGamePlay (false);
-		popUpManager.ShowPopUp ("Game Over!", 
-			"You are out of fuel!\n You're now a cold corpse that wanders the universe for all eternity!", 
-			"Restart");
+		popUpManager.SetPopUp ("Game Over!", 
+			"You are out of fuel!\n You're now a cold corpse that wanders the universe for all eternity!");
+		popUpManager.ShowPopUp (true);
+		popUpManager.SetButtonFunction (0, "Replay", Restart);
+
 	}
 
 	public void FinishLevel() {
 		ActivateGamePlay (false);
 		OnEndLevelEvent ();
 
-		popUpManager.ShowPopUp (
+		popUpManager.SetPopUp (
 			"Level finished!", 
 
 			"Fuel: " + (int)player.GetComponent<SpaceshipInfoScript> ().fuel + 
 				" lt\nTime: " +  timer.timeStr + 
-				"\nScore: " + scoreSystem.endLvScore, 
+				"\nScore: " + scoreSystem.endLvScore);
+		popUpManager.SetButtonFunction (1, "Continue", LoadNextLevel);
+		popUpManager.ShowPopUp (true);
+	}
 
-			"Next Level");
+	public void LoadNextLevel() {
+		Debug.Log ("I should load the next level. If there was one!");
+		Restart ();
+
 	}
 }

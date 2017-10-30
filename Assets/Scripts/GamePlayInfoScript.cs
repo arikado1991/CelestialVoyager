@@ -21,7 +21,7 @@ public class GamePlayInfoScript: MonoBehaviour {
 	//	Text[] retrivedTextComponents = GetComponentsInChildren<Text> ();
 		//score = retrivedTextComponents [1];
 		//time = retrivedTextComponents [0];
-		fuelBar = transform.Find ("FuelBar").GetComponent<Slider>();
+		fuelBar = GameObject.Find ("FuelPanel").GetComponentInChildren<Slider>();
 		if (fuelBar == null) {
 			Debug.Log ("FuelBar not found!");
 		}
@@ -43,6 +43,7 @@ public class GamePlayInfoScript: MonoBehaviour {
 			barColor = Color.yellow;
 		
 		
+		GameObject.Find ("FuelPanel").GetComponent <FadeScript> ().ActivateFading (0.5f, 1);
 		fuelBar.fillRect.transform.GetComponent<Image> ().color = barColor;
 	
 	}

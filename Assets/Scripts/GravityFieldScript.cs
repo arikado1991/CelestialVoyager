@@ -10,6 +10,9 @@ public class GravityFieldScript : MonoBehaviour {
 	SpaceshipInfoScript 		ship;
 	float							orbittingVelocityMagnitude;
 	float 							forceMultiplier;
+	ForceVectorDisplayManager forceVectorDisplayManager;
+
+
 
 	void Start () {
 		
@@ -17,7 +20,8 @@ public class GravityFieldScript : MonoBehaviour {
 		float gravityFieldRadius = GetComponent<CircleCollider2D> ().radius;
 		forceMultiplier = planet.mass * GameOptionsScript.G_CONSTANT / Mathf.Pow(gravityFieldRadius, 2.0f);
 
-		orbittingVelocityMagnitude = Mathf.Sqrt (GameOptionsScript.G_CONSTANT * planet.mass / gravityFieldRadius); 
+		orbittingVelocityMagnitude = Mathf.Sqrt (GameOptionsScript.G_CONSTANT * planet.mass / gravityFieldRadius);
+		forceVectorDisplayManager = GameObject.FindObjectOfType<ForceVectorDisplayManager>();
 
 	}
 	
@@ -30,10 +34,15 @@ public class GravityFieldScript : MonoBehaviour {
 		shipRigidBody2D = col.GetComponent<Rigidbody2D> ();
 		ship = col.GetComponent<SpaceshipInfoScript> ();
 
+	
+
 	}
 
 	void OnTriggerStay2D (Collider2D col){
 		Vector2 gravityForceVector = (Vector2)  (planet.transform.position - col.transform.position);
-		shipRigidBody2D.AddForce (ship.mass * forceMultiplier * gravityForceVector.normalized);
+		gravityForceVector = ship.mass * forceMultiplier * gravityForceVector.normalized;
+		shipRigidBody2D.AddForce (gravityForceVector);
+		//OnUnderGravityFromPlanetEvent (name, gravityForceVector);
 	}
+
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GameOptionsScript : MonoBehaviour {
 
-	// Change value in here please
+	// Change value in here please z
 
 	public const short SHIP_MASS = 20;
 	public const short MAX_FUEL_AMOUNT = 100;
@@ -22,14 +22,14 @@ public class GameOptionsScript : MonoBehaviour {
 	public const short MAX_CAMERA_DISTANCE = 25;
 
 
-	public const int SCREEN_HEIGHT_IN_UNIT = 8;
+	public const int SCREEN_HEIGHT_IN_UNIT = 12;
 	public static float UNIT_TO_PIXEL;
 
 
 
 
 	public static float G_CONSTANT = 20f * Mathf.Pow (2, -26f);
-	public static float MAX_VELOCITY = 3.0f;
+	public static float MAX_VELOCITY = 6.0f;
 
 
 	void Awake () {

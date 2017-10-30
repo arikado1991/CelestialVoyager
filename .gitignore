@@ -13,3 +13,5 @@ Temp/
 *.ini
 Assets/Sounds/.DS_Store
 Assets/Sounds/.DS_Store
+*.dll
+*.dll

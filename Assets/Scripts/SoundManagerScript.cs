@@ -10,7 +10,7 @@ public class SoundManagerScript : MonoBehaviour {
 	public AudioSource themeMusicSpeaker;
 	public AudioSource soundMaker;
 	// Use this for initialization
-	void Start () {
+	void Awake () {
 
 		themeMusicSpeaker = transform.Find ("ThemeMusicPlayer").transform.GetComponent<AudioSource> ();
 		soundMaker = transform.Find ("SoundMaker").transform.GetComponent <AudioSource> ();
@@ -26,7 +26,7 @@ public class SoundManagerScript : MonoBehaviour {
 		tempObjArray = Resources.LoadAll ("Sounds/Noises");
 		foreach (var clip in tempObjArray) {
 			soundLibrary.Add(clip.name, clip as AudioClip);
-			Debug.Log (clip.name);
+			//Debug.Log (clip.name);
 		}
 	}
 

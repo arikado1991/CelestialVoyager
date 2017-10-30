@@ -6,6 +6,7 @@ public class CameraScript : MonoBehaviour {
 
 	// Use this for initialization
 
+
 	void Start () {
 		transform.position = new Vector3 (0, 0, -10);
 
@@ -29,7 +30,7 @@ public class CameraScript : MonoBehaviour {
 	void Follow (Rigidbody2D ship){
 		transform.position = (Vector3) ship.position + (Vector3.back * 
 			Mathf.Min (
-				GameOptionsScript.MIN_CAMERA_DISTANCE + ship.velocity.magnitude , 
+				GameOptionsScript.MIN_CAMERA_DISTANCE + ship.velocity.magnitude * 0.5f, 
 				GameOptionsScript.MAX_CAMERA_DISTANCE));
 	}
 

@@ -11,9 +11,11 @@ public class SpaceshipMovementScript : MonoBehaviour {
 	bool isActive;
 	public SpaceshipInfoScript shipInfo;
 
-	public static EventManagerScript.GetValue <Rigidbody2D> OnSpaceshipUpdate;
+	public static event EventManagerScript.GetValue <Rigidbody2D> OnSpaceshipUpdate;
 
-	public static EventManagerScript.GetValue <ExhaustionLevel> OnChangeExhaustion; 
+	public static event  EventManagerScript.GetValue <ExhaustionLevel> OnChangeExhaustion; 
+
+	public static event EventManagerScript.GetValue <Vector2> OnForceAppliedEvent;
 
 
 	// Use this for initialization
@@ -39,13 +41,13 @@ public class SpaceshipMovementScript : MonoBehaviour {
 				                              (Input.mousePosition.x - GameOptionsScript.SCREEN_CENTER_POINT.x) / GameOptionsScript.UNIT_TO_PIXEL,
 				                              (Input.mousePosition.y - GameOptionsScript.SCREEN_CENTER_POINT.y) / GameOptionsScript.UNIT_TO_PIXEL);
 
-			Vector2 thruster_force = new Vector2 (
-				                         mousePositionInGame.x, 
-				                         mousePositionInGame.y 
-			) * GameOptionsScript.FORCE_MULTIPLIER;
+			Vector2 thruster_force = LimitMaxSpeed (
+				                         mousePositionInGame
+			) ;
 
 			rigidBody.AddForce (thruster_force);
-
+			Debug.Log (thruster_force.ToString());
+			OnForceAppliedEvent (thruster_force);
 			shipInfo.fuel -= thruster_force.magnitude * Time.deltaTime * GameOptionsScript.FUEL_USAGE_MULTIPLIER;
 
 			OnChangeExhaustion (
