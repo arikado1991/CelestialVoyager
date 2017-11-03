@@ -9,28 +9,38 @@ public class GamePlayManagerScript : MonoBehaviour {
 
 	public TimerScript timer;
 	public EndLevelScoreSystemScript scoreSystem;
-
 	public GameObject player;
+	public GameEffectManagerScript effectManager;
 
+	public static GamePlayManagerScript gamePlayManager;
 
+	// related events
 	public static event EventManagerScript.GameDelegate OnGameOverEvent;
 	public static event EventManagerScript.GameDelegate OnGameRestartEvent;
 	public static event EventManagerScript.GameDelegate OnEndLevelEvent;
-	public static event EventManagerScript.SetValue <bool> OnSetGameActiveEvent;
+	public static event EventManagerScript.GetValueDelegate <bool> OnSetGameActiveEvent;
 
-
+	void Awake () {
+		if (gamePlayManager != null) {
+			GameObject.Destroy (this.gameObject);
+		} else {
+			gamePlayManager = this;
+		}
+	}
 
 	// Use this for initialization
 	void Start () {
 		infoBoard = GameObject.FindObjectOfType<GamePlayInfoScript> ();
 		popUpManager = GameObject.FindObjectOfType<PopUpManagerScript> ();
+		effectManager = GameObject.FindObjectOfType <GameEffectManagerScript> ();
 		player = GameObject.FindGameObjectWithTag ("Player");
 
 		popUpManager.SetPopUp ("Welcome to Space Voyager!", "Are you ready to explore the cosmos and beyond?");
 		popUpManager.SetButtonFunction (0, "Um .. no?", Restart);
 		popUpManager.ShowPopUp (true);
-		Debug.Log ("Show pop up at the beginning");
-		Debug.Log (player != null);
+
+//		Debug.Log ("Show pop up at the beginning");
+//		Debug.Log (player != null);
 		timer = GameObject.FindObjectOfType <TimerScript> ();
 		scoreSystem = GameObject.FindObjectOfType <EndLevelScoreSystemScript> ();
 
@@ -57,7 +67,6 @@ public class GamePlayManagerScript : MonoBehaviour {
 		
 		player.SetActive (is_activated);
 		OnSetGameActiveEvent (is_activated);
-		Debug.Log ("Show pop up:" + is_activated);
 
 	}
 

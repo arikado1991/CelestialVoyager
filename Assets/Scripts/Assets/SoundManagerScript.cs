@@ -18,7 +18,7 @@ public class SoundManagerScript : MonoBehaviour {
 		Object[] tempObjArray =  Resources.LoadAll ("Sounds/Music", typeof (AudioClip));
 		foreach (var clip in tempObjArray) {
 			musicLibrary.Add(clip.name, clip as AudioClip);
-			Debug.Log (clip.name);
+//			Debug.Log (clip.name);
 		}
 
 		soundLibrary = new Dictionary <string, AudioClip> ();

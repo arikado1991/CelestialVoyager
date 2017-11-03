@@ -8,7 +8,8 @@ using UnityEngine;
 public class PlanetGravityScript : MonoBehaviour {
 
 	public float mass = 100;
-	public static EventManagerScript.CollideWithObject OnSpaceshipCollisionWithPlanetEvent;
+	public static event  EventManagerScript.GameDelegate OnSpaceshipCollisionWithPlanetEvent;
+	public static event EventManagerScript.GetValueDelegate <Vector3> OnExplosiveContactEvent;
 
 	public delegate void OnGravityFromPlanetDelegate (string planetName, Vector2 gravityForceVector);
 
@@ -18,6 +19,7 @@ public class PlanetGravityScript : MonoBehaviour {
 
 		Rigidbody2D spaceShipRigidBody = c.GetComponent <Rigidbody2D> ();
 		float ship_mass = c.GetComponent <SpaceshipInfoScript> ().mass;
+
 		Vector3 distantVector =  transform.position - c.GetComponent<Transform>().position;
 
 		float gravity_force_magnitude = GameOptionsScript.G_CONSTANT * ship_mass * mass / distantVector.sqrMagnitude;
@@ -27,7 +29,15 @@ public class PlanetGravityScript : MonoBehaviour {
 	}
 
 	void OnCollisionEnter2D (Collision2D col){
-		if (GetComponent<FinishedPlanetScript>() == null)	
+		if (GetComponent<FinishedPlanetScript> () == null) {
+
+			//OnExplosiveContactEvent (col.gameObject.transform.position);
+
+			object[] parameters = { "Explosion", col.contacts [0].point };
+			GamePlayManagerScript.gamePlayManager.effectManager.CreateEffect (2, parameters);
+				//if (pt != null)
+
 			OnSpaceshipCollisionWithPlanetEvent ();
+		}
 	}
 }

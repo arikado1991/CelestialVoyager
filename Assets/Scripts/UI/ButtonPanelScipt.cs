@@ -8,7 +8,7 @@ public class ButtonPanelScipt : MonoBehaviour {
 	GameObject[] buttons;
 	public int[] buttonStatuses;
 
-	public event EventManagerScript.GetValue <int> ButtonIsClicked;
+	public event EventManagerScript.GetValueDelegate <int> ButtonIsClicked;
 
 	// Use this for initialization
 	void Awake () {

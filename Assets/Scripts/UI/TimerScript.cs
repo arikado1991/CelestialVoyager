@@ -10,7 +10,7 @@ public class TimerScript : MonoBehaviour {
 	bool p_isActive = false;
 	Text timerDisplayText;
 	// Use this for initialization
-	public static event EventManagerScript.GetValue <float> OnUpdateTimerEvent;
+	public static event EventManagerScript.GetValueDelegate <float> OnUpdateTimerEvent;
 
 
 	void Start () {

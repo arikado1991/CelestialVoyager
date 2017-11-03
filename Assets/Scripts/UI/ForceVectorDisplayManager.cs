@@ -27,10 +27,10 @@ public class ForceVectorDisplayManager : MonoBehaviour {
 	}
 
 	public void AddVectorDisplay (string name) {
-		Debug.Log ("Key = " + name + " " + forceVectors.ContainsKey (name));
+//		Debug.Log ("Key = " + name + " " + forceVectors.ContainsKey (name));
 		if (!forceVectors.ContainsKey (name)) {
 			GameObject newVectorDisplay = 
-				GameObject.Instantiate (Resources.Load <GameObject> ("Prefabs/ForceVectorDisplayPrefab"));
+				GameObject.Instantiate (Resources.Load <GameObject> ("Prefabs/UI/ForceVectorDisplayPrefab"));
 			forceVectors.Add (name, newVectorDisplay);
 			newVectorDisplay.transform.SetParent (transform);
 			newVectorDisplay.name = name + "_ForceVectorDisplay";
@@ -49,9 +49,9 @@ public class ForceVectorDisplayManager : MonoBehaviour {
 		forceVectors [name].GetComponent<ExpandableArrowScript> ().SetForce (vector);
 
 	}
-
-	// Update is called once per frame
-	void Update () {
 		
+
+	public void Clear() {
+		forceVectors.Clear ();
 	}
 }

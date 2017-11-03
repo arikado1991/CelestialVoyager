@@ -15,16 +15,16 @@ public class ShipAnimationController : MonoBehaviour {
 
 
 	void OnEnable (){
-		SpaceshipMovementScript.OnChangeExhaustion += ChangeAnimation;
+		SpaceshipMovementScript.OnChangeExhaustion += ChangeExhaustionFireAnimation;
 	
 	}
 
 	void OnDisable (){
-		SpaceshipMovementScript.OnChangeExhaustion -= ChangeAnimation;
+		SpaceshipMovementScript.OnChangeExhaustion -= ChangeExhaustionFireAnimation;
 
 	}
 	
-	void ChangeAnimation (SpaceshipMovementScript.ExhaustionLevel exhaustionLevel){
+	void ChangeExhaustionFireAnimation (SpaceshipMovementScript.ExhaustionLevel exhaustionLevel){
 		switch (exhaustionLevel) {
 		case SpaceshipMovementScript.ExhaustionLevel.NONE:
 			flameRenderer.enabled = false;
@@ -35,4 +35,6 @@ public class ShipAnimationController : MonoBehaviour {
 			break;
 		}
 	}
+
+
 }

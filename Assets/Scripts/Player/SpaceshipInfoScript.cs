@@ -7,12 +7,12 @@ public class SpaceshipInfoScript : MonoBehaviour {
 	float p_remainingFuel;
 
 
-	public static event EventManagerScript.GetValue<float> OnFuelAmountUpdateEvent;
+	public static event EventManagerScript.GetValueDelegate<float> OnFuelAmountUpdateEvent;
 	public static event EventManagerScript.GameDelegate OnFuelEmptyEvent;
 
 	public void OnEnable(){
 		//EventManagerScript.ChangeFuelAmountEvent += AddFuel;
-		PlanetGravityScript.OnSpaceshipCollisionWithPlanetEvent += EmptyFuel;
+		PlanetGravityScript.OnSpaceshipCollisionWithPlanetEvent += () => {fuel = 0;};
 		GamePlayManagerScript.OnGameRestartEvent += Reset ;
 	}
 
@@ -24,8 +24,9 @@ public class SpaceshipInfoScript : MonoBehaviour {
 		set { 
 			p_remainingFuel = Mathf.Max (0, value); 
 			OnFuelAmountUpdateEvent(p_remainingFuel);
-			if (p_remainingFuel <= 0)
+			if (p_remainingFuel <= 0) {
 				OnFuelEmptyEvent ();
+			}
 		}
 
 	}
@@ -33,10 +34,5 @@ public class SpaceshipInfoScript : MonoBehaviour {
 	void Reset () {
 		fuel = GameOptionsScript.MAX_FUEL_AMOUNT;
 	}
-
-	void EmptyFuel () {
-		fuel = 0;
-	}
-
 
 };
