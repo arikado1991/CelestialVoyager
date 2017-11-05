@@ -3,19 +3,53 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class SoundManagerScript : MonoBehaviour {
+
+	class SpeakerPool {
+		public Dictionary <string, GameObject> deployedSpeakers;
+		public Queue inactiveSpeakers;
+	}
+
+	SpeakerPool speakerPool;
+
+//singleton instance
+	static private SoundManagerScript s_soundManager;
+	static public SoundManagerScript GetInstance() {
+		return s_soundManager;
+	}
+
+
 	Dictionary <string, AudioClip> musicLibrary;
 	Dictionary <string, AudioClip> soundLibrary;
 
-	public AudioClip gameTheme;
+
+
+
 	public AudioSource themeMusicSpeaker;
-	public AudioSource soundMaker;
+
 	// Use this for initialization
 	void Awake () {
 
+		if (s_soundManager != null && s_soundManager != this) {
+			GameObject.Destroy (this.gameObject);
+			return;
+		} 
+		s_soundManager = this;
+
+
+		speakerPool = new SpeakerPool ();
+		speakerPool.deployedSpeakers = new Dictionary<string, GameObject> ();
+		speakerPool.inactiveSpeakers = new Queue ();
+
+
 		themeMusicSpeaker = transform.Find ("ThemeMusicPlayer").transform.GetComponent<AudioSource> ();
-		soundMaker = transform.Find ("SoundMaker").transform.GetComponent <AudioSource> ();
+	
+		// Load Music and Sound into the libraries
+
+		Object[] tempObjArray;
+
 		musicLibrary = new Dictionary <string, AudioClip> ();
-		Object[] tempObjArray =  Resources.LoadAll ("Sounds/Music", typeof (AudioClip));
+
+		tempObjArray =  Resources.LoadAll ("Sounds/Music", typeof (AudioClip));
 		foreach (var clip in tempObjArray) {
 			musicLibrary.Add(clip.name, clip as AudioClip);
 //			Debug.Log (clip.name);
@@ -32,8 +66,7 @@ public class SoundManagerScript : MonoBehaviour {
 
 	void LoadThemeMusic (bool isGameActive) {
 
-		if (soundMaker == null)
-			soundMaker = GameObject.FindObjectOfType<GamePlayManagerScript>().player.GetComponent <AudioSource> ();
+
 		if (isGameActive) {
 			themeMusicSpeaker.clip = musicLibrary["Theme Music"];
 			themeMusicSpeaker.volume = 1f;
@@ -46,50 +79,74 @@ public class SoundManagerScript : MonoBehaviour {
 			
 	}
 
-	void PlayDeadSound () {
-		//soundMaker.clip = soundLibrary ["Explosion"];
-		//soundMaker.PlayDelayed (1);
-		soundMaker.clip = soundLibrary ["Wilhelm Scream"];
-		soundMaker.Play ();
+	public bool PlaySound (string soundName, Vector3 position, float volume = 1f, bool setNewInstance = true) {
 
-	}
+		AudioSource audioSource;
+		GameObject speaker;
 
-	void PlayRocketFlyingSound (SpaceshipMovementScript.ExhaustionLevel exhaustionLevel){
-		soundMaker.clip = soundLibrary ["Rocket Flying"];
-		if (!soundMaker.isPlaying)
-			soundMaker.Play ();
-		switch (exhaustionLevel) {
-		case SpaceshipMovementScript.ExhaustionLevel.NONE:
-			soundMaker.Stop ();
-			break;
-		case SpaceshipMovementScript.ExhaustionLevel.SMALL:
-			soundMaker.volume = 0.5f;
-			break;
-		case SpaceshipMovementScript.ExhaustionLevel.LARGE:
-			soundMaker.volume = 1f;
-			break;
-		default:
-			break;
+
+		if (soundLibrary.ContainsKey (soundName)) {
+			
+			if (!setNewInstance && speakerPool.deployedSpeakers.ContainsKey (soundName + "_speaker")) {
+
+				speaker = speakerPool.deployedSpeakers [soundName + "_speaker"];
+				audioSource = speaker.GetComponent<AudioSource> ();
+
+			} else {
+				
+				if (speakerPool.inactiveSpeakers.Count == 0) {
+					
+					speaker = GameObject.Instantiate (Resources.Load ("Prefabs/Effects/Speaker") as GameObject);
+
+				} else {
+
+					speaker = speakerPool.inactiveSpeakers.Dequeue () as GameObject;
+
+				}
+
+				speaker.SetActive (false);
+				speaker.name = soundName + "_speaker";
+
+				string suffix;
+				int i = 0;
+				while (speakerPool.deployedSpeakers.ContainsKey (speaker.name) ){
+					suffix = "_" + i;
+					speaker.name = soundName + "_speaker" + suffix;
+					i++;
+				}
+
+				speakerPool.deployedSpeakers.Add (speaker.name, speaker);
+			
+				audioSource = speaker.GetComponent <AudioSource> ();
+				audioSource.clip = soundLibrary [soundName];
+				audioSource.Play ();
+				speaker.SetActive (true);
+
+			}
+			speaker.transform.position = position;
+
+			audioSource.volume = volume;
+
+			return true;
 		}
-
+		return false;
 	}
+
+		
 
 	void OnEnable(){
 		GamePlayManagerScript.OnSetGameActiveEvent += LoadThemeMusic ;
-		PlanetGravityScript.OnSpaceshipCollisionWithPlanetEvent += PlayDeadSound;
-		SpaceshipMovementScript.OnChangeExhaustion += PlayRocketFlyingSound;
+		SpeakerScript.OnSoundPlayFinish += DeleteSpeaker;
+		GamePlayManagerScript.OnGameRestartEvent += ResetSpeakers;
+
 	}
 
 	void OnDisable(){
 		GamePlayManagerScript.OnSetGameActiveEvent -= LoadThemeMusic ;
-		PlanetGravityScript.OnSpaceshipCollisionWithPlanetEvent -= PlayDeadSound;
-		SpaceshipMovementScript.OnChangeExhaustion -= PlayRocketFlyingSound;
+		SpeakerScript.OnSoundPlayFinish += DeleteSpeaker;
+		GamePlayManagerScript.OnGameRestartEvent -= ResetSpeakers;
 	}
-	// Update is called once per frame
-	void Update () {
-		
-		
-	}
+
 
 	void PlayThemeMusic (bool play){
 		if (play)
@@ -98,5 +155,22 @@ public class SoundManagerScript : MonoBehaviour {
 			themeMusicSpeaker.Stop();
 	}
 
+	void DeleteSpeaker(string name) {
+		
+		if (speakerPool.deployedSpeakers.ContainsKey (name)) {
 
+			speakerPool.inactiveSpeakers.Enqueue (speakerPool.deployedSpeakers [name]);
+			speakerPool.deployedSpeakers.Remove (name);
+			speakerPool.deployedSpeakers [name].SetActive (false);
+
+		} else {
+			Debug.Log ("SoundManagerScript: Can't find speaker of that name");
+		}
+	}
+
+	void ResetSpeakers (){
+		foreach (string objectName in speakerPool.deployedSpeakers.Keys) {
+			DeleteSpeaker (objectName);
+		}
+	}
 }
