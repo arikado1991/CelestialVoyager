@@ -13,7 +13,7 @@ public class GameEffectManagerScript : MonoBehaviour {
 		Object[] tempEffectArray = Resources.LoadAll ("Prefabs/Effects");
 		foreach (Object o in tempEffectArray) {
 			effectLibrary.Add (o.name, o as GameObject);
-			Debug.Log (o.name);
+		//	Debug.Log (o.name);
 		}
 	}
 	// Use this for initialization

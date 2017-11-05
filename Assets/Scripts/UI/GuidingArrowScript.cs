@@ -8,7 +8,7 @@ public class GuidingArrowScript : MonoBehaviour {
 	const float SHRINKING_DISTANCE = 25f;
 
 	float ARROW_CLOSEST_DISTANCE_FROM_BODY = 1.3f;
-	float ARROW_FURTHEST_DISTANCE_FROM_BODY = 1.5f;
+	float ARROW_FURTHEST_DISTANCE_FROM_BODY = 1.8f;
 
 
 	FinishedPlanetScript destinationPlanet;
@@ -36,7 +36,7 @@ public class GuidingArrowScript : MonoBehaviour {
 	void Restart() {
 		if (arrowHead == null) {
 			arrowHead = transform.Find ("ArrowHead");
-			Debug.Log (arrowHead != null);
+//			Debug.Log (arrowHead != null);
 		}
 
 		if (player == null) {

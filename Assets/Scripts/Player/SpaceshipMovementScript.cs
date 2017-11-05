@@ -34,6 +34,7 @@ public class SpaceshipMovementScript : MonoBehaviour {
 			return;
 
 		Rigidbody2D rigidBody = GetComponent<Rigidbody2D> ();
+		ShipAnimationController shipAnimationController = GetComponent <ShipAnimationController> ();
 
 		if (Input.GetMouseButton (0)) {
 
@@ -50,10 +51,14 @@ public class SpaceshipMovementScript : MonoBehaviour {
 			OnForceAppliedEvent (thruster_force);
 			shipInfo.fuel -= thruster_force.magnitude * Time.deltaTime * GameOptionsScript.FUEL_USAGE_MULTIPLIER;
 
-			OnChangeExhaustion (
+			shipAnimationController.ChangeExhaustionFireAnimation (
 				(thruster_force.magnitude < GameOptionsScript.MAX_VELOCITY) ? ExhaustionLevel.SMALL : ExhaustionLevel.LARGE);
+
+			SoundManagerScript.GetInstance ().PlaySound ("Rocket Flying", transform.position, thruster_force.magnitude / GameOptionsScript.MAX_VELOCITY, false);
+
 		} else {
-			OnChangeExhaustion (ExhaustionLevel.NONE);
+			shipAnimationController.ChangeExhaustionFireAnimation (ExhaustionLevel.NONE);
+			SoundManagerScript.GetInstance ().PlaySound ("Rocket Flying", transform.position, 0, false);
 		}
 
 		transform.rotation = Quaternion.LookRotation (Vector3.forward, rigidBody.velocity);

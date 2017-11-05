@@ -71,6 +71,7 @@ public class GamePlayManagerScript : MonoBehaviour {
 	}
 
 	public void Restart(){
+		Debug.Log ("GamePLayManage: Hit restart");
 		OnGameRestartEvent ();
 		popUpManager.ShowPopUp (false);
 		ActivateGamePlay (true);
