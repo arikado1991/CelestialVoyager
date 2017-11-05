@@ -6,10 +6,10 @@ public class GameOptionsScript : MonoBehaviour {
 
 	// Change value in here please z
 
-	public const short SHIP_MASS = 20;
+	public const short SHIP_MASS = 50;
 	public const short MAX_FUEL_AMOUNT = 100;
 
-	public const short FUEL_USAGE_MULTIPLIER = 6;
+	public const short FUEL_USAGE_MULTIPLIER = 4;
 	public const short FORCE_MULTIPLIER = 1;
 
 	public static short TIME_PENALTY_PER_SECOND = 2;

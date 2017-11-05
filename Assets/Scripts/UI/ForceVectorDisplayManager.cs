@@ -38,7 +38,7 @@ public class ForceVectorDisplayManager : MonoBehaviour {
 
 			SpriteRenderer[] spriteRenderers = forceVectors [name].GetComponentsInChildren<SpriteRenderer> ();
 			foreach (SpriteRenderer render in spriteRenderers) {
-				render.color = (name == "Spaceship") ? Color.blue : Color.red;
+				render.color = (name == "Spaceship") ? Color.cyan : Color.red;
 			}
 		}
 	}
