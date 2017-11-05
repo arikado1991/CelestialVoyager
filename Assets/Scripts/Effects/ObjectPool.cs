@@ -9,12 +9,19 @@ public class ObjectPool {
 	public Dictionary <string, GameObject> deployedObjects;
 	public Queue inactiveObjects;
 
-	ObjectPool() {
+	public ObjectPool() {
 		deployedObjects = new Dictionary <string, GameObject>();
 		inactiveObjects = new Queue();
 	}
 
-	GameObject GetAvailableObject () {
+	public GameObject Find (string name) {
+		if (deployedObjects.ContainsKey (name)) {
+			return deployedObjects[name];
+		}
+		return null;
+	}
+
+	public GameObject GetAvailableObject (string name) {
 		GameObject returnedObject;
 		if (inactiveObjects.Count == 0) {
 
@@ -25,10 +32,19 @@ public class ObjectPool {
 			returnedObject = inactiveObjects.Dequeue () as GameObject;
 
 		}
+		string suffix;
+		int i = 0;
+		while (deployedObjects.ContainsKey (name) ){
+			suffix = "_" + i;
+			name = name  + suffix;
+			i++;
+		}
+		returnedObject.name = name;
+		deployedObjects.Add (name, returnedObject);
 		return returnedObject;
 	}
 
-	void DestroyObject (string name) {
+	public void DestroyObject (string name) {
 		if (deployedObjects.ContainsKey (name)) {
 
 			inactiveObjects.Enqueue (deployedObjects [name]);
@@ -44,6 +60,21 @@ public class ObjectPool {
 
 	public void SetPrefab (GameObject prefab){
 		objectPrefab = prefab;
+	}
+
+	public void Clear() {
+		
+		foreach (string key in deployedObjects.Keys) {
+			GameObject victim = deployedObjects [key];
+		
+			GameObject.Destroy (victim);
+		}
+		deployedObjects.Clear ();
+
+		while (inactiveObjects.Count > 0) {
+			
+			GameObject.Destroy (inactiveObjects.Dequeue() as GameObject);
+		}
 	}
 
 }

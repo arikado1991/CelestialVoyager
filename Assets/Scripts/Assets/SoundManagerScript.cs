@@ -4,12 +4,8 @@ using UnityEngine;
 
 public class SoundManagerScript : MonoBehaviour {
 
-	class SpeakerPool {
-		public Dictionary <string, GameObject> deployedSpeakers;
-		public Queue inactiveSpeakers;
-	}
 
-	SpeakerPool speakerPool;
+	ObjectPool speakerPool;
 
 //singleton instance
 	static private SoundManagerScript s_soundManager;
@@ -36,9 +32,8 @@ public class SoundManagerScript : MonoBehaviour {
 		s_soundManager = this;
 
 
-		speakerPool = new SpeakerPool ();
-		speakerPool.deployedSpeakers = new Dictionary<string, GameObject> ();
-		speakerPool.inactiveSpeakers = new Queue ();
+		speakerPool = new ObjectPool ();
+		speakerPool.SetPrefab (Resources.Load ("Prefabs/Effects/Speaker") as GameObject);
 
 
 		themeMusicSpeaker = transform.Find ("ThemeMusicPlayer").transform.GetComponent<AudioSource> ();
@@ -81,41 +76,26 @@ public class SoundManagerScript : MonoBehaviour {
 
 	public bool PlaySound (string soundName, Vector3 position, float volume = 1f, bool setNewInstance = true) {
 
-		AudioSource audioSource;
-		GameObject speaker;
+		AudioSource audioSource = null;
+		GameObject speaker = null;
 
 
 		if (soundLibrary.ContainsKey (soundName)) {
 			
-			if (!setNewInstance && speakerPool.deployedSpeakers.ContainsKey (soundName + "_speaker")) {
-
-				speaker = speakerPool.deployedSpeakers [soundName + "_speaker"];
-				audioSource = speaker.GetComponent<AudioSource> ();
-
-			} else {
+			if (!setNewInstance){
 				
-				if (speakerPool.inactiveSpeakers.Count == 0) {
-					
-					speaker = GameObject.Instantiate (Resources.Load ("Prefabs/Effects/Speaker") as GameObject);
+				speaker = speakerPool.Find (soundName + "_speaker");
+				if (speaker != null){
 
-				} else {
-
-					speaker = speakerPool.inactiveSpeakers.Dequeue () as GameObject;
-
+					audioSource = speaker.GetComponent<AudioSource> ();
 				}
 
+			}
+
+			if (speaker == null) {
+				
+				speaker = speakerPool.GetAvailableObject (soundName + "_speaker");
 				speaker.SetActive (false);
-				speaker.name = soundName + "_speaker";
-
-				string suffix;
-				int i = 0;
-				while (speakerPool.deployedSpeakers.ContainsKey (speaker.name) ){
-					suffix = "_" + i;
-					speaker.name = soundName + "_speaker" + suffix;
-					i++;
-				}
-
-				speakerPool.deployedSpeakers.Add (speaker.name, speaker);
 			
 				audioSource = speaker.GetComponent <AudioSource> ();
 				audioSource.clip = soundLibrary [soundName];
@@ -123,9 +103,13 @@ public class SoundManagerScript : MonoBehaviour {
 				speaker.SetActive (true);
 
 			}
+
 			speaker.transform.position = position;
 
-			audioSource.volume = volume;
+			if (audioSource != null)
+				audioSource.volume = volume;
+			else
+				Debug.Log ("SoundManager: Somehow the audio source is still null");
 
 			return true;
 		}
@@ -157,20 +141,10 @@ public class SoundManagerScript : MonoBehaviour {
 
 	void DeleteSpeaker(string name) {
 		
-		if (speakerPool.deployedSpeakers.ContainsKey (name)) {
-
-			speakerPool.inactiveSpeakers.Enqueue (speakerPool.deployedSpeakers [name]);
-			speakerPool.deployedSpeakers.Remove (name);
-			speakerPool.deployedSpeakers [name].SetActive (false);
-
-		} else {
-			Debug.Log ("SoundManagerScript: Can't find speaker of that name");
-		}
+		speakerPool.DestroyObject (name);
 	}
 
 	void ResetSpeakers (){
-		foreach (string objectName in speakerPool.deployedSpeakers.Keys) {
-			DeleteSpeaker (objectName);
-		}
+		speakerPool.Clear ();
 	}
 }
