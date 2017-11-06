@@ -32,15 +32,25 @@ public class ObjectPool {
 			returnedObject = inactiveObjects.Dequeue () as GameObject;
 
 		}
-		string suffix;
+		string suffix = "";
 		int i = 0;
-		while (deployedObjects.ContainsKey (name) ){
+
+		bool newEntryRequired = true;
+		while (deployedObjects.ContainsKey (name + suffix)){
+			
 			suffix = "_" + i;
-			name = name  + suffix;
+
 			i++;
+
+			newEntryRequired = false;
 		}
-		returnedObject.name = name;
-		deployedObjects.Add (name, returnedObject);
+		returnedObject.name = name + suffix;
+		if (newEntryRequired) {
+			
+			deployedObjects.Add (returnedObject.name, returnedObject);
+		} else {
+			deployedObjects [name] = returnedObject;
+		}
 		return returnedObject;
 	}
 
@@ -63,14 +73,12 @@ public class ObjectPool {
 	}
 
 	public void Clear() {
+		Dictionary<string, GameObject>.KeyCollection  keys = deployedObjects.Keys ;
+		foreach (string key in keys) {
+			inactiveObjects.Enqueue (deployedObjects [key]);
 		
-		foreach (string key in deployedObjects.Keys) {
-			GameObject victim = deployedObjects [key];
-		
-			GameObject.Destroy (victim);
 		}
 		deployedObjects.Clear ();
-
 		while (inactiveObjects.Count > 0) {
 			
 			GameObject.Destroy (inactiveObjects.Dequeue() as GameObject);

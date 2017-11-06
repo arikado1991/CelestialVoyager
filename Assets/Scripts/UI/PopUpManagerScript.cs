@@ -6,6 +6,10 @@ using UnityEngine.UI;
 
 
 public class PopUpManagerScript : MonoBehaviour {
+	static PopUpManagerScript s_popUpManager;
+	public static PopUpManagerScript GetInstance() {
+		return s_popUpManager;
+	}
 
 	 struct PopUp {
 		public GameObject gameObject;
@@ -16,18 +20,31 @@ public class PopUpManagerScript : MonoBehaviour {
 
 	PopUp popUp;
 	void Awake() {
+		if (s_popUpManager != null && s_popUpManager != this) {
+			GameObject.Destroy (this.gameObject);
+			return;
+		}
+		s_popUpManager = this;
+
+	
 		popUp = new PopUp ();
 
+	
+	}
+	// Use this for initialization
+	void OnEnable () {
+		
+		popUp = new PopUp ();
 		popUp.gameObject = GameObject.Find ("PopUp");
 		popUp.title = popUp.gameObject.transform.Find("Title").GetComponent<Text>();
 		popUp.content = popUp.gameObject.transform.Find("Message").GetComponent<Text>();
 		popUp.buttonPanel = popUp.gameObject.GetComponentInChildren <ButtonPanelScipt> ();
-	}
-	// Use this for initialization
-	void Start () {
-		
 
 		//ShowPopUp (false);
+	}
+
+	public void ClearPopup () {
+		popUp.buttonPanel.ResetButtons ();
 	}
 
 	public void ShowPopUp( bool visible){

@@ -2,51 +2,78 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+
 public class ForceVectorDisplayManager : MonoBehaviour {
+
+	static ForceVectorDisplayManager s_forceDisplayManager;
+	public static ForceVectorDisplayManager GetInstance(){
+		return s_forceDisplayManager;
+	}
 	
-	Dictionary <string, GameObject> forceVectors;
+	ObjectPool forceVectors;
 	// Use this for initialization
-	void Start () {
-		forceVectors = new Dictionary <string, GameObject> ();
-		  
+
+	void Awake () {
+		
+		if (s_forceDisplayManager != null && s_forceDisplayManager != this) {
+			GameObject.Destroy (this.gameObject);
+			return;
+		}
+		s_forceDisplayManager = this;
+
+
+		forceVectors = new ObjectPool ();
+		forceVectors.SetPrefab (Resources.Load ("Prefabs/UI/ForceVectorDisplayPrefab") as GameObject);
+		//DontDestroyOnLoad (this.gameObject);
 	}
 
 	void OnEnable() {
 		GamePlayManagerScript.OnGameRestartEvent += OnGamePlayRestart;
 		PlanetGravityScript.OnUnderGravityFromPlanetEvent += SetVectorDisplay;	
 		SpaceshipMovementScript.OnForceAppliedEvent += (Vector2 v) => SetVectorDisplay ("Spaceship", v);
-	}	
+	}
+
+	void OnDisable(){
+		GamePlayManagerScript.OnGameRestartEvent -= OnGamePlayRestart;
+		PlanetGravityScript.OnUnderGravityFromPlanetEvent -= SetVectorDisplay;	
+		SpaceshipMovementScript.OnForceAppliedEvent -= (Vector2 v) => SetVectorDisplay ("Spaceship", v);
+	}
 		
 
 	void OnGamePlayRestart() {
-		if (!forceVectors.ContainsKey ("Spaceship")){
+		if (forceVectors.Find ("Spaceship")!= null){
 			AddVectorDisplay ("Spaceship");
 
 		}
 
 	}
 
-	public void AddVectorDisplay (string name) {
+	GameObject AddVectorDisplay (string name) {
 //		Debug.Log ("Key = " + name + " " + forceVectors.ContainsKey (name));
-		if (!forceVectors.ContainsKey (name)) {
-			GameObject newVectorDisplay = 
-				GameObject.Instantiate (Resources.Load <GameObject> ("Prefabs/UI/ForceVectorDisplayPrefab"));
-			forceVectors.Add (name, newVectorDisplay);
+		GameObject newVectorDisplay = forceVectors.Find (name + "_ForceVectorDisplay");
+		if (newVectorDisplay == null) {
+			newVectorDisplay = 
+				forceVectors.GetAvailableObject (name + "_ForceVectorDisplay");
+
 			newVectorDisplay.transform.SetParent (transform);
-			newVectorDisplay.name = name + "_ForceVectorDisplay";
 			newVectorDisplay.GetComponent<ExpandableArrowScript> ().SetFollowShip ();
 
-			SpriteRenderer[] spriteRenderers = forceVectors [name].GetComponentsInChildren<SpriteRenderer> ();
+			SpriteRenderer[] spriteRenderers = newVectorDisplay.GetComponentsInChildren<SpriteRenderer> ();
+
 			foreach (SpriteRenderer render in spriteRenderers) {
 				render.color = (name == "Spaceship") ? Color.cyan : Color.red;
 			}
 		}
+		newVectorDisplay.SetActive (true);
+		return newVectorDisplay;
 	}
 
 	public void SetVectorDisplay (string name, Vector2 vector) {
-		if (!forceVectors.ContainsKey (name))
-			AddVectorDisplay (name);
-		forceVectors [name].GetComponent<ExpandableArrowScript> ().SetForce (vector);
+		GameObject targetForceVector = forceVectors.Find (name);
+		if (targetForceVector == null)
+			targetForceVector = AddVectorDisplay (name);
+		targetForceVector.GetComponent<ExpandableArrowScript> ().SetForce (vector);
 
 	}
 		

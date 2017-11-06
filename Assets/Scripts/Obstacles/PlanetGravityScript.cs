@@ -34,10 +34,15 @@ public class PlanetGravityScript : MonoBehaviour {
 			//OnExplosiveContactEvent (col.gameObject.transform.position);
 
 			object[] parameters = { "Explosion", col.contacts [0].point };
-			GamePlayManagerScript.gamePlayManager.effectManager.CreateEffect (2, parameters);
+			GameEffectManagerScript.GetInstance().CreateEffect (2, parameters);
 				//if (pt != null)
-
 			OnSpaceshipCollisionWithPlanetEvent ();
+			//StartCoroutine ("KillShip");
 		}
+	}
+
+	IEnumerator KillShip () {
+		yield return new WaitForSeconds (1.5f);
+		OnSpaceshipCollisionWithPlanetEvent ();
 	}
 }

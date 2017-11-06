@@ -8,12 +8,10 @@ public class SpaceshipMovementScript : MonoBehaviour {
 	public enum ExhaustionLevel {NONE, SMALL, LARGE};
 
 
-	bool isActive;
+
 	public SpaceshipInfoScript shipInfo;
 
 	public static event EventManagerScript.GetValueDelegate <Rigidbody2D> OnSpaceshipUpdate;
-
-	public static event  EventManagerScript.GetValueDelegate <ExhaustionLevel> OnChangeExhaustion; 
 
 	public static event EventManagerScript.GetValueDelegate <Vector2> OnForceAppliedEvent;
 
@@ -29,9 +27,13 @@ public class SpaceshipMovementScript : MonoBehaviour {
 
 	}
 
+	void OnDisable (){
+		
+
+	}
+
 	void Update () {
-		if (!isActive)
-			return;
+
 
 		Rigidbody2D rigidBody = GetComponent<Rigidbody2D> ();
 		ShipAnimationController shipAnimationController = GetComponent <ShipAnimationController> ();
@@ -83,15 +85,11 @@ public class SpaceshipMovementScript : MonoBehaviour {
 
 
 	void Restart(){
-		isActive = true;
+
 		transform.position = Vector3.zero;
 		GetComponent <Rigidbody2D> ().velocity = Vector3.zero;
 	}
 
-	void OnCollisionEnter2D (Collision2D col) {
-		//death on collision with planet
 
-
-	}
 
 }

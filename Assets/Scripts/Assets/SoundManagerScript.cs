@@ -5,7 +5,7 @@ using UnityEngine;
 public class SoundManagerScript : MonoBehaviour {
 
 
-	ObjectPool speakerPool;
+
 
 //singleton instance
 	static private SoundManagerScript s_soundManager;
@@ -17,10 +17,23 @@ public class SoundManagerScript : MonoBehaviour {
 	Dictionary <string, AudioClip> musicLibrary;
 	Dictionary <string, AudioClip> soundLibrary;
 
-
-
-
 	public AudioSource themeMusicSpeaker;
+	ObjectPool speakerPool;
+
+	void OnEnable(){
+		GamePlayManagerScript.OnSetGameActiveEvent += LoadThemeMusic ;
+		GamePlayManagerScript.OnGameRestartEvent += ResetSpeakers;
+		SpeakerScript.OnSoundPlayFinish += DeleteSpeaker;
+
+	
+
+	}
+
+	void OnDisable(){
+		//GamePlayManagerScript.OnSetGameActiveEvent -= LoadThemeMusic ;
+		//SpeakerScript.OnSoundPlayFinish -= DeleteSpeaker;
+	
+	}
 
 	// Use this for initialization
 	void Awake () {
@@ -30,6 +43,7 @@ public class SoundManagerScript : MonoBehaviour {
 			return;
 		} 
 		s_soundManager = this;
+	
 
 
 		speakerPool = new ObjectPool ();
@@ -73,7 +87,7 @@ public class SoundManagerScript : MonoBehaviour {
 			themeMusicSpeaker.Play ();
 			
 	}
-
+		
 	public bool PlaySound (string soundName, Vector3 position, float volume = 1f, bool setNewInstance = true) {
 
 		AudioSource audioSource = null;
@@ -88,10 +102,15 @@ public class SoundManagerScript : MonoBehaviour {
 				if (speaker != null){
 
 					audioSource = speaker.GetComponent<AudioSource> ();
+					if (volume == 0) {
+						DeleteSpeaker (speaker.name);
+					}
 				}
 
 			}
-
+			if (volume == 0) {
+				return true;
+			}
 			if (speaker == null) {
 				
 				speaker = speakerPool.GetAvailableObject (soundName + "_speaker");
@@ -99,15 +118,19 @@ public class SoundManagerScript : MonoBehaviour {
 			
 				audioSource = speaker.GetComponent <AudioSource> ();
 				audioSource.clip = soundLibrary [soundName];
-				audioSource.Play ();
 				speaker.SetActive (true);
+				audioSource.Play ();
+
 
 			}
 
 			speaker.transform.position = position;
 
-			if (audioSource != null)
+			if (audioSource != null) {
+				
 				audioSource.volume = volume;
+
+			}
 			else
 				Debug.Log ("SoundManager: Somehow the audio source is still null");
 
@@ -118,18 +141,7 @@ public class SoundManagerScript : MonoBehaviour {
 
 		
 
-	void OnEnable(){
-		GamePlayManagerScript.OnSetGameActiveEvent += LoadThemeMusic ;
-		SpeakerScript.OnSoundPlayFinish += DeleteSpeaker;
-		GamePlayManagerScript.OnGameRestartEvent += ResetSpeakers;
 
-	}
-
-	void OnDisable(){
-		GamePlayManagerScript.OnSetGameActiveEvent -= LoadThemeMusic ;
-		SpeakerScript.OnSoundPlayFinish += DeleteSpeaker;
-		GamePlayManagerScript.OnGameRestartEvent -= ResetSpeakers;
-	}
 
 
 	void PlayThemeMusic (bool play){
@@ -142,9 +154,11 @@ public class SoundManagerScript : MonoBehaviour {
 	void DeleteSpeaker(string name) {
 		
 		speakerPool.DestroyObject (name);
+	
 	}
 
 	void ResetSpeakers (){
+		Debug.Log ("Clear all speakers");
 		speakerPool.Clear ();
 	}
 }

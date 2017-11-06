@@ -7,8 +7,8 @@ public class GuidingArrowScript : MonoBehaviour {
 	const float MAX_DISTANCE_FROM_SPACESHIP = 7.5f;
 	const float SHRINKING_DISTANCE = 25f;
 
-	float ARROW_CLOSEST_DISTANCE_FROM_BODY = 1.3f;
-	float ARROW_FURTHEST_DISTANCE_FROM_BODY = 1.8f;
+	const float ARROW_CLOSEST_DISTANCE_FROM_BODY = 1.3f;
+	const float ARROW_FURTHEST_DISTANCE_FROM_BODY = 1.6f;
 
 
 	FinishedPlanetScript destinationPlanet;
@@ -20,30 +20,25 @@ public class GuidingArrowScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
+		Restart ();
 	}
 
-	void OnEnable() {
-		GamePlayManagerScript.OnGameRestartEvent += Restart;
-
-	}
-
-	void OnDisable(){
-		GamePlayManagerScript.OnGameRestartEvent -= Restart;
-	}
 
 
 	void Restart() {
+		
 		if (arrowHead == null) {
 			arrowHead = transform.Find ("ArrowHead");
-//			Debug.Log (arrowHead != null);
+			Debug.Log (arrowHead != null);
 		}
 
 		if (player == null) {
-			player = GamePlayManagerScript.gamePlayManager.player;
+			player = SpaceshipInfoScript.GetPlayer ().gameObject;
 		}
 
 		destinationPlanet = GameObject.FindObjectOfType <FinishedPlanetScript> ();
+
+	
 	}
 
 	// Update is called once per frame
@@ -53,7 +48,7 @@ public class GuidingArrowScript : MonoBehaviour {
 		
 		 
 			transform.localScale = Vector3.one * (
-				(arrowRelativePositionToShip.magnitude < SHRINKING_DISTANCE) ? 
+			    (arrowRelativePositionToShip.magnitude < SHRINKING_DISTANCE) ? 
 				(arrowRelativePositionToShip.magnitude / SHRINKING_DISTANCE) : 1);
 
 			arrowRelativePositionToShip = (arrowRelativePositionToShip.magnitude > MAX_DISTANCE_FROM_SPACESHIP) ?
@@ -67,10 +62,13 @@ public class GuidingArrowScript : MonoBehaviour {
 
 			//arrow movement back and forth
 			if (arrowHead != null) {
-				arrowHead.localPosition += arrow_step * Time.deltaTime * Vector3.up;
-				arrow_step *= (arrowHead.localPosition.y > 1.5 || arrowHead.localPosition.y < 1.3) ? -1 : 1;
+				arrow_step *= (   	(arrowHead.localPosition.y <= ARROW_FURTHEST_DISTANCE_FROM_BODY &&
+									arrowHead.localPosition.y >= ARROW_CLOSEST_DISTANCE_FROM_BODY) 
+					? 1: -1);
+				arrowHead.localPosition +=   arrow_step * Time.deltaTime * Vector3.up;
+				Debug.Log ("LocalPosition = " + arrowHead.localPosition.y);
 			}
-		}
-
+		} else
+			Restart ();
 	}
 }

@@ -3,9 +3,14 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
 
-public class GamePlayInfoScript: MonoBehaviour {
+public class FuelGaugeScript: MonoBehaviour {
 
-	public Text score, time;
+	static private FuelGaugeScript s_fuelGauge;
+	static public FuelGaugeScript GetInstance() {
+		return s_fuelGauge;
+	}
+
+
 
 	Slider fuelBar;
 
@@ -18,9 +23,15 @@ public class GamePlayInfoScript: MonoBehaviour {
 
 	// Use this for initialization
 	void Awake () {
-	//	Text[] retrivedTextComponents = GetComponentsInChildren<Text> ();
-		//score = retrivedTextComponents [1];
-		//time = retrivedTextComponents [0];
+
+		if (s_fuelGauge != null && s_fuelGauge != this) {
+			GameObject.Destroy (this.gameObject);
+			return;
+		}
+
+		s_fuelGauge = this;
+
+
 		fuelBar = GameObject.Find ("FuelPanel").GetComponentInChildren<Slider>();
 		if (fuelBar == null) {
 			Debug.Log ("FuelBar not found!");

@@ -5,12 +5,10 @@ using UnityEngine.UI;
 
 public class TimerScript : MonoBehaviour {
 
-	public Image[] shownDigits;
 	float p_timePassed;
 	bool p_isActive = false;
 	Text timerDisplayText;
 	// Use this for initialization
-	public static event EventManagerScript.GetValueDelegate <float> OnUpdateTimerEvent;
 
 
 	void Start () {
@@ -18,7 +16,6 @@ public class TimerScript : MonoBehaviour {
 	
 		GamePlayManagerScript.OnSetGameActiveEvent += SetActive;
 		GamePlayManagerScript.OnGameRestartEvent += Restart;
-	
 	}
 
 	bool active {

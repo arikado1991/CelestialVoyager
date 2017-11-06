@@ -4,11 +4,24 @@ using UnityEngine;
 
 public class GameEffectManagerScript : MonoBehaviour {
 
+
+	static GameEffectManagerScript s_effectManager;
+	public static GameEffectManagerScript GetInstance() {
+		return s_effectManager;
+	}
+
 	Dictionary <string, GameObject> effectLibrary;
 
 	public static event EventManagerScript.MultipleParameterDelegate OnCreateEffectEvent;
 
 	void Awake() {
+
+		if (s_effectManager != null && s_effectManager != this) {
+			GameObject.Destroy (this.gameObject);
+			return;
+		}
+		s_effectManager = this;
+
 		effectLibrary = new Dictionary <string, GameObject> ();
 		Object[] tempEffectArray = Resources.LoadAll ("Prefabs/Effects");
 		foreach (Object o in tempEffectArray) {

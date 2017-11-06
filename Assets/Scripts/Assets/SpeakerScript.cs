@@ -7,8 +7,8 @@ public class SpeakerScript : MonoBehaviour {
 	float playDuration;
 	public static event EventManagerScript.GetValueDelegate<string> OnSoundPlayFinish;
 	// Use this for initialization
-	void Start () {
-		
+	void Awake () {
+		playDuration = -1f;
 	}
 
 	void OnEnable() {
@@ -22,7 +22,7 @@ public class SpeakerScript : MonoBehaviour {
 			return;
 		}
 
-		playDuration = audioSource.clip.length;
+		playDuration = audioSource.clip.length + 1f;
 	}
 
 	void OnDisable(){
@@ -32,8 +32,8 @@ public class SpeakerScript : MonoBehaviour {
 	void Update () {
 		playDuration -= Time.deltaTime;
 //		Debug.Log (playDuration);
-		if (playDuration <= 0) {
-			OnSoundPlayFinish (gameObject.name);
+		if (playDuration != -1 && playDuration <= 0) {
+			OnSoundPlayFinish (this.gameObject.name);
 			gameObject.SetActive (false);
 		}
 	}

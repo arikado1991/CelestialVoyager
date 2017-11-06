@@ -38,6 +38,7 @@ GameObject:
   - component: {fileID: 224480614651928858}
   - component: {fileID: 222559031428819264}
   - component: {fileID: 114679928653137218}
+  - component: {fileID: 114461301876463726}
   - component: {fileID: 114402668357833990}
   m_Layer: 5
   m_Name: FuelPanel
@@ -242,6 +243,17 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114461301876463726
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1371537042618812}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e51b4712d468543c8853aa424f1f735d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114679928653137218
 MonoBehaviour:
   m_ObjectHideFlags: 1

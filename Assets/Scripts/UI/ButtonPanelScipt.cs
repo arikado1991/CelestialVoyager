@@ -8,7 +8,6 @@ public class ButtonPanelScipt : MonoBehaviour {
 	GameObject[] buttons;
 	public int[] buttonStatuses;
 
-	public event EventManagerScript.GetValueDelegate <int> ButtonIsClicked;
 
 	// Use this for initialization
 	void Awake () {
@@ -16,6 +15,11 @@ public class ButtonPanelScipt : MonoBehaviour {
 		buttonStatuses = new int[transform.childCount];
 		buttons = new GameObject[buttonsCount];
 
+		ResetButtons ();
+	}
+
+	public void ResetButtons() {
+		int buttonsCount = transform.childCount;
 		for (int i = 0; i < buttonsCount; i++) {
 			buttons [i] = transform.GetChild (i).gameObject;
 			SetButton (i, "", null);
