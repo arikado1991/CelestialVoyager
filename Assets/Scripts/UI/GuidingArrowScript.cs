@@ -29,7 +29,7 @@ public class GuidingArrowScript : MonoBehaviour {
 		
 		if (arrowHead == null) {
 			arrowHead = transform.Find ("ArrowHead");
-			Debug.Log (arrowHead != null);
+//			Debug.Log (arrowHead != null);
 		}
 
 		if (player == null) {
@@ -66,7 +66,7 @@ public class GuidingArrowScript : MonoBehaviour {
 									arrowHead.localPosition.y >= ARROW_CLOSEST_DISTANCE_FROM_BODY) 
 					? 1: -1);
 				arrowHead.localPosition +=   arrow_step * Time.deltaTime * Vector3.up;
-				Debug.Log ("LocalPosition = " + arrowHead.localPosition.y);
+				//Debug.Log ("LocalPosition = " + arrowHead.localPosition.y);
 			}
 		} else
 			Restart ();

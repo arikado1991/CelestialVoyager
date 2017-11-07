@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 public class GamePlayManagerScript : MonoBehaviour {
 
@@ -21,6 +22,7 @@ public class GamePlayManagerScript : MonoBehaviour {
 //	public static event EventManagerScript.GameDelegate OnGameOverEvent;
 	public static event EventManagerScript.GameDelegate OnGameRestartEvent;
 	public static event EventManagerScript.GameDelegate OnEndLevelEvent;
+	public static event EventManagerScript.GameDelegate OnNewLevelLoaded;
 	public static event EventManagerScript.GetValueDelegate <bool> OnSetGameActiveEvent;
 
 	void Awake () {
@@ -31,19 +33,50 @@ public class GamePlayManagerScript : MonoBehaviour {
 		s_gameplayMangager = this;
 		DontDestroyOnLoad (this.gameObject);
 
+		SceneManager.sceneLoaded += AtNewLevel;
+
 	}
 
-	// Use this for initialization
-	void Start () {
 
+
+	// Use this for initialization
+	void AtNewLevel (Scene newScene, LoadSceneMode loadSceneMode) {
+		OnNewLevelLoaded ();
+		Debug.Log ("Current scene " + newScene.name + ", load mode: " + loadSceneMode);
+		
 		popUpManager = PopUpManagerScript.GetInstance ();
 		//effectManager = GameObject.FindObjectOfType <GameEffectManagerScript> ();
-		player = GameObject.FindGameObjectWithTag ("Player");
+		if (player == null)
+			player = GameObject.FindGameObjectWithTag ("Player");
 
-		popUpManager.ClearPopup ();
+		/*popUpManager.ClearPopup ();
 		popUpManager.SetPopUp ("Welcome to Space Voyager!", "Are you ready to explore the cosmos and beyond?");
 		popUpManager.SetButtonFunction (0, "Um .. no?", Restart);
 		popUpManager.ShowPopUp (true);
+*/
+		PopUpScript popUp = popUpManager.CreatePopUp (PopUpManagerScript.PopUpType.MESSAGE, "GreetingPopUp").GetComponent<PopUpScript> ();
+		popUp.SetDimension (0.5f, 0.5f);
+		popUp.GetContent ("Title").GetComponent<Text>().text = "Welcome";
+		popUp.GetContent ("Message").GetComponent<Text>().text = "Are you ready to explore the cosmos and beyond?";
+		ButtonPanelScipt buttonPanel = popUp.GetContent("ButtonPanelPrefab").GetComponent <ButtonPanelScipt> ();
+		buttonPanel.SetButton  (0, "Um ... no??", Restart);
+		buttonPanel.EvenlyPlaceButton ();
+
+		popUp = popUpManager.CreatePopUp (PopUpManagerScript.PopUpType.MESSAGE, "GameOverPopUp").GetComponent<PopUpScript> ();
+		popUp.SetDimension (0.5f, 0.5f);
+		popUp.GetContent ("Title").GetComponent<Text>().text = "Game Over";
+		popUp.GetContent ("Message").GetComponent<Text>().text = "You're out of fuel\nYou're now a frozen corpse that wanders the empty space for all eternity.?";
+		buttonPanel = popUp.GetContent("ButtonPanelPrefab").GetComponent <ButtonPanelScipt> ();
+		buttonPanel.SetButton  (0, "Replay", Restart);
+		buttonPanel.EvenlyPlaceButton ();
+
+		popUp = popUpManager.CreatePopUp (PopUpManagerScript.PopUpType.MESSAGE, "EndLevelPopUp").GetComponent<PopUpScript> ();
+		popUp.SetDimension (0.5f, 0.5f);
+		popUp.GetContent ("Title").GetComponent<Text>().text = "Level completed";
+			buttonPanel = popUp.GetContent("ButtonPanelPrefab").GetComponent <ButtonPanelScipt> ();
+		buttonPanel.SetButton  (0, "Replay", Restart);
+		buttonPanel.SetButton  (1, "Next level", LoadNextLevel);
+		buttonPanel.EvenlyPlaceButton ();
 
 //		Debug.Log ("Show pop up at the beginning");
 //		Debug.Log (player != null);
@@ -51,6 +84,8 @@ public class GamePlayManagerScript : MonoBehaviour {
 		scoreSystem = GameObject.FindObjectOfType <EndLevelScoreSystemScript> ();
 
 		Restart ();
+
+
 
 	}
 
@@ -79,42 +114,35 @@ public class GamePlayManagerScript : MonoBehaviour {
 	public void Restart(){
 		//Debug.Log ("GamePLayManage: Hit restart");
 		OnGameRestartEvent ();
-		popUpManager.ShowPopUp (false);
+		//popUpManager.ShowPopUp ("GreetingPopUp", false);
+		popUpManager.HideAllPopup();
 		ActivateGamePlay (true);
 
 	}
 
 	public void GameOver() {
 		ActivateGamePlay (false);
-		popUpManager.ClearPopup ();
-		popUpManager.SetPopUp ("Game Over!", 
-			"You are out of fuel!\nYou're now a cold corpse that wanders the universe for all eternity!");
-		
-		popUpManager.SetButtonFunction (0, "Replay", Restart);
-		popUpManager.ShowPopUp (true);
+		popUpManager.ShowPopUp ("GameOverPopUp", true);
+
 
 	}
 
 	public void FinishLevel() {
 		ActivateGamePlay (false);
-		OnEndLevelEvent ();
-		popUpManager.ClearPopup ();
-		popUpManager.SetPopUp (
-			"Level finished!", 
 
+
+		PopUpScript popUp = popUpManager.GetPopUp ("EndLevelPopUp").GetComponent<PopUpScript> ();
+
+		popUp.GetContent ("Message").GetComponent<Text>().text = 
 			"Fuel: " + (int)player.GetComponent<SpaceshipInfoScript> ().fuel + 
-				" lt\nTime: " +  timer.timeStr + 
-				"\nScore: " + scoreSystem.endLvScore);
-		
-		popUpManager.SetButtonFunction (0, "Replay", Restart);
-		popUpManager.SetButtonFunction (1, "Continue", LoadNextLevel);
-		popUpManager.ShowPopUp (true);
+			"\nTime: " +  timer.timeStr + 
+			"\nScore: " + scoreSystem.endLvScore;
+		popUpManager.ShowPopUp ("EndLevelPopUp", true);
 	}
 
 	public void LoadNextLevel() {
 		Debug.Log ("I should load the next level. If there was one!");
 		SceneManager.LoadScene ("TestScene2");
-		Restart ();
 
 
 	}
