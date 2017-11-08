@@ -78,17 +78,22 @@ public class GamePlayManagerScript : MonoBehaviour {
 		buttonPanel.SetButton  (1, "Next level", LoadNextLevel);
 		buttonPanel.EvenlyPlaceButton ();
 
+		popUpManager.HideAllPopup ();
+
 //		Debug.Log ("Show pop up at the beginning");
 //		Debug.Log (player != null);
 		timer = GameObject.FindObjectOfType <TimerScript> ();
 		scoreSystem = GameObject.FindObjectOfType <EndLevelScoreSystemScript> ();
 
-		Restart ();
-
+		BeginLevelBrief ();
 
 
 	}
 
+	void BeginLevelBrief () {
+		ActivateGamePlay (false);
+		popUpManager.ShowPopUp ("GreetingPopUp", true);
+	}
 
 
 	void OnEnable(){
@@ -142,7 +147,7 @@ public class GamePlayManagerScript : MonoBehaviour {
 
 	public void LoadNextLevel() {
 		Debug.Log ("I should load the next level. If there was one!");
-		SceneManager.LoadScene ("TestScene2");
+		SceneManager.LoadScene ((SceneManager.GetActiveScene().buildIndex + 1)%SceneManager.sceneCount);
 
 
 	}

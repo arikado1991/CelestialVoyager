@@ -28,7 +28,7 @@ public class GameOptionsScript : MonoBehaviour {
 
 
 
-	public static float G_CONSTANT = 20f * Mathf.Pow (2, -26f);
+	public static float G_CONSTANT = 25f * Mathf.Pow (2, -26f);
 	public static float MAX_VELOCITY = 6.0f;
 
 

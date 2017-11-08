@@ -11,35 +11,29 @@ public class GuidingArrowScript : MonoBehaviour {
 	const float ARROW_FURTHEST_DISTANCE_FROM_BODY = 1.6f;
 
 
-	FinishedPlanetScript destinationPlanet;
+	GameObject destinationPlanet;
 	GameObject player;
 	Transform arrowHead;
 
-	float arrow_step = 0.5f;
+
+	float arrowStep;
+
 
 
 	// Use this for initialization
-	void Start () {
-		Restart ();
+
+
+	public void Ready () {
+		arrowHead = transform.Find ("ArrowHead");
+		player = SpaceshipInfoScript.GetPlayer ().gameObject;
+		destinationPlanet = transform.parent.gameObject;
+		arrowStep = 0.5f;
+		Debug.Log ("ArrowHead = " + (arrowHead != null) + (destinationPlanet != null) + (player != null)); 
 	}
 
 
 
-	void Restart() {
-		
-		if (arrowHead == null) {
-			arrowHead = transform.Find ("ArrowHead");
-//			Debug.Log (arrowHead != null);
-		}
 
-		if (player == null) {
-			player = SpaceshipInfoScript.GetPlayer ().gameObject;
-		}
-
-		destinationPlanet = GameObject.FindObjectOfType <FinishedPlanetScript> ();
-
-	
-	}
 
 	// Update is called once per frame
 	void Update () {
@@ -62,13 +56,14 @@ public class GuidingArrowScript : MonoBehaviour {
 
 			//arrow movement back and forth
 			if (arrowHead != null) {
-				arrow_step *= (   	(arrowHead.localPosition.y <= ARROW_FURTHEST_DISTANCE_FROM_BODY &&
+				arrowStep *= (   	(arrowHead.localPosition.y <= ARROW_FURTHEST_DISTANCE_FROM_BODY &&
 									arrowHead.localPosition.y >= ARROW_CLOSEST_DISTANCE_FROM_BODY) 
 					? 1: -1);
-				arrowHead.localPosition +=   arrow_step * Time.deltaTime * Vector3.up;
+				arrowHead.localPosition +=   arrowStep * Time.deltaTime * Vector3.up;
 				//Debug.Log ("LocalPosition = " + arrowHead.localPosition.y);
 			}
-		} else
-			Restart ();
+		} else {
+			Ready ();
+		}
 	}
 }
