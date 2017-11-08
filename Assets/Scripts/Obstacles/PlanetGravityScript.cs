@@ -17,15 +17,20 @@ public class PlanetGravityScript : MonoBehaviour {
 
 	void OnTriggerStay2D(Collider2D c){
 
-		Rigidbody2D spaceShipRigidBody = c.GetComponent <Rigidbody2D> ();
-		float ship_mass = c.GetComponent <SpaceshipInfoScript> ().mass;
+		SpaceshipInfoScript spaceShipInfo =	c.GetComponent <SpaceshipInfoScript> ();
+		if (spaceShipInfo != null)
+		{
+			Rigidbody2D spaceShipRigidBody = c.GetComponent <Rigidbody2D> ();
 
-		Vector3 distantVector =  transform.position - c.GetComponent<Transform>().position;
+			float ship_mass = spaceShipInfo.mass;
 
-		float gravity_force_magnitude = GameOptionsScript.G_CONSTANT * ship_mass * mass / distantVector.sqrMagnitude;
-		Vector2 gravity_force = new Vector2 (distantVector.x, distantVector.y).normalized * gravity_force_magnitude ;
-		spaceShipRigidBody.AddForce (gravity_force);
-		OnUnderGravityFromPlanetEvent (name, gravity_force);
+			Vector3 distantVector =  transform.position - c.GetComponent<Transform>().position;
+
+			float gravity_force_magnitude = GameOptionsScript.G_CONSTANT * ship_mass * mass / distantVector.sqrMagnitude;
+			Vector2 gravity_force = new Vector2 (distantVector.x, distantVector.y).normalized * gravity_force_magnitude ;
+			spaceShipRigidBody.AddForce (gravity_force);
+			OnUnderGravityFromPlanetEvent (name, gravity_force);
+		}
 	}
 
 	void OnCollisionEnter2D (Collision2D col){
