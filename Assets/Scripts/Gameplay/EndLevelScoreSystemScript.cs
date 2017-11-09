@@ -12,7 +12,7 @@ public class EndLevelScoreSystemScript : MonoBehaviour {
 	}
 
 	public int endLvScore {
-		get { return p_endLevelScore; }
+		get { GetEndLevelScore(); return p_endLevelScore; }
 	}
 	// Use this for initialization
 	void OnEnable (){

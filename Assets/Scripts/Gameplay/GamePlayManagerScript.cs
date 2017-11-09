@@ -55,15 +55,16 @@ public class GamePlayManagerScript : MonoBehaviour {
 		popUpManager.ShowPopUp (true);
 */
 		PopUpScript popUp = popUpManager.CreatePopUp (PopUpManagerScript.PopUpType.MESSAGE, "GreetingPopUp").GetComponent<PopUpScript> ();
-		popUp.SetDimension (0.5f, 0.5f);
+		popUp.SetDimension (1f, 1f);
 		popUp.GetContent ("Title").GetComponent<Text>().text = "Welcome";
+		//popUp.SetFontSize ("Title", 12);
 		popUp.GetContent ("Message").GetComponent<Text>().text = "Are you ready to explore the cosmos and beyond?";
 		ButtonPanelScipt buttonPanel = popUp.GetContent("ButtonPanelPrefab").GetComponent <ButtonPanelScipt> ();
 		buttonPanel.SetButton  (0, "Um ... no??", Restart);
 		buttonPanel.EvenlyPlaceButton ();
 
 		popUp = popUpManager.CreatePopUp (PopUpManagerScript.PopUpType.MESSAGE, "GameOverPopUp").GetComponent<PopUpScript> ();
-		popUp.SetDimension (0.5f, 0.5f);
+		popUp.SetDimension (1f, 1f);
 		popUp.GetContent ("Title").GetComponent<Text>().text = "Game Over";
 		popUp.GetContent ("Message").GetComponent<Text>().text = "You're out of fuel\nYou're now a frozen corpse that wanders the empty space for all eternity.?";
 		buttonPanel = popUp.GetContent("ButtonPanelPrefab").GetComponent <ButtonPanelScipt> ();
@@ -71,7 +72,7 @@ public class GamePlayManagerScript : MonoBehaviour {
 		buttonPanel.EvenlyPlaceButton ();
 
 		popUp = popUpManager.CreatePopUp (PopUpManagerScript.PopUpType.MESSAGE, "EndLevelPopUp").GetComponent<PopUpScript> ();
-		popUp.SetDimension (0.5f, 0.5f);
+		popUp.SetDimension (1f, 1f);
 		popUp.GetContent ("Title").GetComponent<Text>().text = "Level completed";
 			buttonPanel = popUp.GetContent("ButtonPanelPrefab").GetComponent <ButtonPanelScipt> ();
 		buttonPanel.SetButton  (0, "Replay", Restart);
@@ -146,8 +147,9 @@ public class GamePlayManagerScript : MonoBehaviour {
 	}
 
 	public void LoadNextLevel() {
-		Debug.Log ("I should load the next level. If there was one!");
-		SceneManager.LoadScene ((SceneManager.GetActiveScene().buildIndex + 1)%SceneManager.sceneCount);
+	//	Debug.Log ("I should load the next level. If there was one!");
+	//	Debug.Log ("Current scene: " + SceneManager.GetActiveScene().buildIndex + ", next scene: " + SceneManager.sceneCount);
+		SceneManager.LoadScene ((SceneManager.GetActiveScene().buildIndex + 1) % SceneManager.sceneCountInBuildSettings);
 
 
 	}

@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 50793634482894790}
   - component: {fileID: 70127001991032216}
   m_Layer: 0
-  m_Name: SpaceJunk
+  m_Name: SpaceJunkPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 
 public class PopUpManagerScript : MonoBehaviour {
+
+
 	public enum PopUpType {MESSAGE, ENDGAMERANKING
 
 	};
@@ -20,6 +22,7 @@ public class PopUpManagerScript : MonoBehaviour {
 	Dictionary <string, GameObject> popUpPrefabs;
 
 	void Awake() {
+		PopUpScript.basicFontSize  =  (int) (GameOptionsScript.UNIT_TO_PIXEL / 2 );
 		if (s_popUpManager != null && s_popUpManager != this) {
 			GameObject.Destroy (this.gameObject);
 			return;
@@ -35,9 +38,10 @@ public class PopUpManagerScript : MonoBehaviour {
 		foreach (object o in tempArray) {
 			temp = o as GameObject;
 			popUpPrefabs.Add (temp.name, temp);
+
 		//	Debug.Log (temp.name);
 		}
-
+		PopUpScript.basicFontSize = (int) ( Mathf.Max (GameOptionsScript.UNIT_TO_PIXEL / 28 , 1));
 	
 	}
 
@@ -79,6 +83,7 @@ public class PopUpManagerScript : MonoBehaviour {
 		try {
 			newPopup = GameObject.Instantiate (popUpPrefabs [prefabKey]);
 			newPopup.transform.SetParent ( GameObject.Find("UICanvas").transform, false);
+			newPopup.transform.localPosition = Vector3.zero;
 			newPopup.name = popUpName;
 			popUps.Add (popUpName, newPopup.GetComponent <PopUpScript> ());
 			Debug.Log ("Initiation object successful newPopUp is" + (newPopup != null));

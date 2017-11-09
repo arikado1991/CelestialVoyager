@@ -28,6 +28,7 @@ public class OrbitMovementScript : MonoBehaviour {
 	}
 
 	void OnTriggerStay2D (Collider2D col) {
+		return;
 		Vector3 centrifugalForce = (orbittedPlanet.transform.position - transform.position);
 		Vector3 instantVelocity = new Vector3 (centrifugalForce.y, -centrifugalForce.x);
 
