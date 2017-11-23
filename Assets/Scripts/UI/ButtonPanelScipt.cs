@@ -5,9 +5,11 @@ using UnityEngine.UI;
 
 public class ButtonPanelScipt : MonoBehaviour {
 
+
 	GameObject[] buttons;
 	public int[] buttonStatuses;
 
+	static Dictionary <string, GameObject> buttonAssets;
 
 	// Use this for initialization
 	void Awake () {
@@ -58,7 +60,7 @@ public class ButtonPanelScipt : MonoBehaviour {
 				buttonStatuses [index] = 0;
 			} else {
 				chosenButton.SetActive (true);
-				chosenButton.GetComponentInChildren<Text> ().text = label;
+				//chosenButton.GetComponentInChildren<Text> ().text = label;
 				chosenButton.GetComponent<Button> ().onClick.AddListener (func);
 				buttonStatuses [index] = 1;
 			}

@@ -74,6 +74,7 @@ public class PopUpManagerScript : MonoBehaviour {
 			prefabKey = "1Title1Message3ButtonMaxPopUp";
 			break;
 		case PopUpType.ENDGAMERANKING:
+			prefabKey = "EndLevelPopUp";
 			break;
 		default:
 			prefabKey = "";
