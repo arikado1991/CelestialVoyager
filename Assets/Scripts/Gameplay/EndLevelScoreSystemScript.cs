@@ -28,7 +28,7 @@ public class EndLevelScoreSystemScript : MonoBehaviour {
 
 	void GetEndLevelScore(){
 		
-		LevelScript levelInfo = FindObjectOfType<LevelScript> ();
+		LevelScript levelInfo = GetComponent<LevelScript> ();
 
 		float remainingFuel = gameManager.player.GetComponent <SpaceshipInfoScript>().fuel;
 		float completionTime = gameManager.timer.time;

@@ -62,8 +62,8 @@ public class GamePlayManagerScript : MonoBehaviour {
 
 		popUp = popUpManager.CreatePopUp (PopUpManagerScript.PopUpType.MESSAGE, "GameOverPopUp").GetComponent<PopUpScript> ();
 		popUp.SetDimension (1f, 1f);
-		popUp.GetContent ("Title").GetComponent<Text>().text = "Out of fuel!";
-		popUp.GetContent ("Message").GetComponent<Text>().text = "You have been fired from NASA.";
+		popUp.GetContent ("Title").GetComponent<Text>().text = "Game Over";
+		popUp.GetContent ("Message").GetComponent<Text>().text = "You're out of fuel\nYou're now a frozen corpse that wanders the empty space for all eternity.?";
 		buttonPanel = popUp.GetContent("ButtonPanelPrefab").GetComponent <ButtonPanelScipt> ();
 		buttonPanel.SetButton  (0, "Replay", Restart);
 		buttonPanel.EvenlyPlaceButton ();
@@ -133,8 +133,7 @@ public class GamePlayManagerScript : MonoBehaviour {
 	public void FinishLevel() {
 		ActivateGamePlay (false);
 
-		if (scoreSystem == null)
-			scoreSystem = FindObjectOfType<EndLevelScoreSystemScript> ();
+
 		PopUpScript popUp = popUpManager.GetPopUp ("EndLevelPopUp").GetComponent<PopUpScript> ();
 		popUp.GetContent ("Message").GetComponent<Text> ().alignment = TextAnchor.MiddleLeft;
 		popUp.GetContent ("Message").GetComponent<Text> ().text = 

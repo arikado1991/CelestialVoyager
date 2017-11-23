@@ -48,27 +48,9 @@ public class SpaceshipMovementScript : MonoBehaviour {
 				                         mousePositionInGame
 			) ;
 
-			Vector2 currentVelocity = rigidBody.velocity;
-			float normalSpeedValue = 5f;
-			float forceMultiplier = .5f;
-
-			thruster_force = new Vector2 (
-				(
-				    (currentVelocity.x > normalSpeedValue && currentVelocity.x * thruster_force.x < 0) ? 
-						thruster_force.x * Mathf.Abs (currentVelocity.x) * forceMultiplier : 
-						thruster_force.x
-				), 
-
-				(
-				    (currentVelocity.y > normalSpeedValue && currentVelocity.y * thruster_force.y < 0) ? 
-						thruster_force.y * Mathf.Abs (currentVelocity.y) * forceMultiplier :
-						thruster_force.y
-				)
-			);
-
 			rigidBody.AddForce (thruster_force);
 		//	Debug.Log (thruster_force.ToString());
-//			OnForceAppliedEvent (thruster_force);
+			OnForceAppliedEvent (thruster_force);
 			shipInfo.fuel -= thruster_force.magnitude * Time.deltaTime * GameOptionsScript.FUEL_USAGE_MULTIPLIER;
 
 			shipAnimationController.ChangeExhaustionFireAnimation (
