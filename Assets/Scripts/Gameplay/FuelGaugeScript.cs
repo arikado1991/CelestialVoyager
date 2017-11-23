@@ -15,9 +15,11 @@ public class FuelGaugeScript: MonoBehaviour {
 	Slider fuelBar;
 
 	void OnEnable() {
+		SpaceshipInfoScript.OnMaxFuelAmountUpdateEvent += SetMaxFuelBar;
 		SpaceshipInfoScript.OnFuelAmountUpdateEvent += SetFuelBar;
 	}
 	void OnDisable() {
+		SpaceshipInfoScript.OnMaxFuelAmountUpdateEvent -= SetMaxFuelBar;
 		SpaceshipInfoScript.OnFuelAmountUpdateEvent -= SetFuelBar;
 	}
 
@@ -39,9 +41,13 @@ public class FuelGaugeScript: MonoBehaviour {
 	}
 
 
+	public void SetMaxFuelBar (float newMaxFuel) {
+		fuelBar.maxValue = newMaxFuel;
+	}
 
 
 	public void SetFuelBar (float newFuelAmount){
+		
 		fuelBar.value = (newFuelAmount > 0) ? (int)newFuelAmount : 0;
 		Color barColor = Color.green;
 		if (newFuelAmount == 0)

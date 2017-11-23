@@ -13,6 +13,7 @@ public class SpaceshipInfoScript : MonoBehaviour {
 
 
 	public static event EventManagerScript.GetValueDelegate<float> OnFuelAmountUpdateEvent;
+	public static event EventManagerScript.GetValueDelegate<float> OnMaxFuelAmountUpdateEvent;
 	public static event EventManagerScript.GameDelegate OnFuelEmptyEvent;
 
 	public void Awake() {
@@ -54,7 +55,8 @@ public class SpaceshipInfoScript : MonoBehaviour {
 	}
 
 	void Restart () {
-		fuel = GameOptionsScript.MAX_FUEL_AMOUNT;
+		fuel = GamePlayManagerScript.GetInstance().levelInfo.maxFuel;
+		OnMaxFuelAmountUpdateEvent (fuel);
 		Debug.Log ("ResetFuelTank");
 
 	}

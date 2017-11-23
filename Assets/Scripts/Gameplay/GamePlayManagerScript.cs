@@ -11,7 +11,7 @@ public class GamePlayManagerScript : MonoBehaviour {
 	public TimerScript timer;
 	public EndLevelScoreSystemScript scoreSystem;
 	public GameObject player;
-
+	public LevelScript levelInfo;
 
 	static GamePlayManagerScript s_gameplayMangager;
 	public static GamePlayManagerScript GetInstance(){
@@ -49,15 +49,12 @@ public class GamePlayManagerScript : MonoBehaviour {
 		if (player == null)
 			player = GameObject.FindGameObjectWithTag ("Player");
 
-		/*popUpManager.ClearPopup ();
-		popUpManager.SetPopUp ("Welcome to Space Voyager!", "Are you ready to explore the cosmos and beyond?");
-		popUpManager.SetButtonFunction (0, "Um .. no?", Restart);
-		popUpManager.ShowPopUp (true);
-*/
+	
+
 		PopUpScript popUp = popUpManager.CreatePopUp (PopUpManagerScript.PopUpType.MESSAGE, "GreetingPopUp").GetComponent<PopUpScript> ();
 		popUp.SetDimension (1f, 1f);
 		popUp.GetContent ("Title").GetComponent<Text>().text = "Welcome";
-		//popUp.SetFontSize ("Title", 12);
+	
 		popUp.GetContent ("Message").GetComponent<Text>().text = "Are you ready to explore the cosmos and beyond?";
 		ButtonPanelScipt buttonPanel = popUp.GetContent("ButtonPanelPrefab").GetComponent <ButtonPanelScipt> ();
 		buttonPanel.SetButton  (0, "Um ... no??", Restart);
@@ -71,21 +68,21 @@ public class GamePlayManagerScript : MonoBehaviour {
 		buttonPanel.SetButton  (0, "Replay", Restart);
 		buttonPanel.EvenlyPlaceButton ();
 
-		popUp = popUpManager.CreatePopUp (PopUpManagerScript.PopUpType.MESSAGE, "EndLevelPopUp").GetComponent<PopUpScript> ();
+		popUp = popUpManager.CreatePopUp (PopUpManagerScript.PopUpType.ENDGAMERANKING, "EndLevelPopUp").GetComponent<PopUpScript> ();
 		popUp.SetDimension (1f, 1f);
+
 		popUp.GetContent ("Title").GetComponent<Text>().text = "Level completed";
-			buttonPanel = popUp.GetContent("ButtonPanelPrefab").GetComponent <ButtonPanelScipt> ();
+		buttonPanel = popUp.GetContent("ButtonPanelPrefab").GetComponent <ButtonPanelScipt> ();
 		buttonPanel.SetButton  (0, "Replay", Restart);
 		buttonPanel.SetButton  (1, "Next level", LoadNextLevel);
 		buttonPanel.EvenlyPlaceButton ();
 
 		popUpManager.HideAllPopup ();
 
-//		Debug.Log ("Show pop up at the beginning");
-//		Debug.Log (player != null);
+//	
 		timer = GameObject.FindObjectOfType <TimerScript> ();
 		scoreSystem = GameObject.FindObjectOfType <EndLevelScoreSystemScript> ();
-
+		levelInfo = GameObject.FindObjectOfType <LevelScript>();
 		BeginLevelBrief ();
 
 
@@ -138,11 +135,18 @@ public class GamePlayManagerScript : MonoBehaviour {
 
 
 		PopUpScript popUp = popUpManager.GetPopUp ("EndLevelPopUp").GetComponent<PopUpScript> ();
+		popUp.GetContent ("Message").GetComponent<Text> ().alignment = TextAnchor.MiddleLeft;
+		popUp.GetContent ("Message").GetComponent<Text> ().text = 
+			"Fuel: " + (int)player.GetComponent<SpaceshipInfoScript> ().fuel +
+		"\nTime: " + timer.timeStr +
+		"\nScore: " + scoreSystem.endLvScore;
 
-		popUp.GetContent ("Message").GetComponent<Text>().text = 
-			"Fuel: " + (int)player.GetComponent<SpaceshipInfoScript> ().fuel + 
-			"\nTime: " +  timer.timeStr + 
-			"\nScore: " + scoreSystem.endLvScore;
+		Image[] stars = popUp.transform.Find ("Stars").GetComponentsInChildren <Image>();
+
+		for (int i = 0; i < 3; i++)
+
+			stars [i].enabled = (i < scoreSystem.starEarned);
+
 		popUpManager.ShowPopUp ("EndLevelPopUp", true);
 	}
 
