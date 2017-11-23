@@ -14,7 +14,7 @@ public class GuidingArrowScript : MonoBehaviour {
 	GameObject destinationPlanet;
 	GameObject player;
 	Transform arrowHead;
-
+	Transform arrowPivot;
 
 	float arrowStep;
 
@@ -24,7 +24,8 @@ public class GuidingArrowScript : MonoBehaviour {
 
 
 	public void Ready () {
-		arrowHead = transform.Find ("ArrowHead");
+		arrowPivot = transform.Find ("ArrowHeadPivot");
+		arrowHead = arrowPivot.Find("ArrowHead");
 		player = SpaceshipInfoScript.GetPlayer ().gameObject;
 		destinationPlanet = transform.parent.gameObject;
 		arrowStep = 0.5f;
@@ -40,7 +41,7 @@ public class GuidingArrowScript : MonoBehaviour {
 		if (destinationPlanet != null && player != null) {
 			Vector3 arrowRelativePositionToShip = (destinationPlanet.transform.position - player.transform.position);
 		
-		 
+
 			transform.localScale = Vector3.one * (
 			    (arrowRelativePositionToShip.magnitude < SHRINKING_DISTANCE) ? 
 				(arrowRelativePositionToShip.magnitude / SHRINKING_DISTANCE) : 1);
@@ -52,7 +53,7 @@ public class GuidingArrowScript : MonoBehaviour {
 			transform.position = player.transform.position + arrowRelativePositionToShip;
 			transform.position += Vector3.back * 0.2f;
 
-			transform.rotation = Quaternion.LookRotation (Vector3.forward, arrowRelativePositionToShip);
+			arrowPivot.rotation = Quaternion.LookRotation (Vector3.forward, arrowRelativePositionToShip);
 
 			//arrow movement back and forth
 			if (arrowHead != null) {
