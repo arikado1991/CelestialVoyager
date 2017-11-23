@@ -29,7 +29,7 @@ public class PlanetGravityScript : MonoBehaviour {
 			float gravity_force_magnitude = GameOptionsScript.G_CONSTANT * ship_mass * mass / distantVector.sqrMagnitude;
 			Vector2 gravity_force = new Vector2 (distantVector.x, distantVector.y).normalized * gravity_force_magnitude ;
 			spaceShipRigidBody.AddForce (gravity_force);
-			OnUnderGravityFromPlanetEvent (name, gravity_force);
+			//OnUnderGravityFromPlanetEvent (name, gravity_force);
 		}
 	}
 
