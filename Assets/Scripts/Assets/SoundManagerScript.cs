@@ -78,10 +78,10 @@ public class SoundManagerScript : MonoBehaviour {
 
 		if (isGameActive) {
 			themeMusicSpeaker.clip = musicLibrary["Theme Music"];
-			themeMusicSpeaker.volume = 1f;
+			themeMusicSpeaker.volume = .05f;
 		} else {
 			themeMusicSpeaker.clip = musicLibrary["Theme Music"];
-			themeMusicSpeaker.volume = 0.3f;
+			themeMusicSpeaker.volume = 0.01f;
 		}
 		if (!themeMusicSpeaker.isPlaying)
 			themeMusicSpeaker.Play ();

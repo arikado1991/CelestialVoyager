@@ -56,7 +56,7 @@ public class SpaceshipMovementScript : MonoBehaviour {
 			shipAnimationController.ChangeExhaustionFireAnimation (
 				(thruster_force.magnitude < GameOptionsScript.MAX_VELOCITY) ? ExhaustionLevel.SMALL : ExhaustionLevel.LARGE);
 
-			SoundManagerScript.GetInstance ().PlaySound ("Rocket Flying", transform.position, thruster_force.magnitude / GameOptionsScript.MAX_VELOCITY, false);
+			SoundManagerScript.GetInstance ().PlaySound ("Rocket Flying", transform.position, 0.6f + thruster_force.magnitude / GameOptionsScript.MAX_VELOCITY, false);
 
 		} else {
 			shipAnimationController.ChangeExhaustionFireAnimation (ExhaustionLevel.NONE);
