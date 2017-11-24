@@ -50,7 +50,7 @@ public class SpaceshipMovementScript : MonoBehaviour {
 
 			Vector2 currentVelocity = rigidBody.velocity;
 			float normalSpeedValue = 5f;
-			float forceMultiplier = .5f;
+			float forceMultiplier = .8f;
 
 			thruster_force = new Vector2 (
 				(

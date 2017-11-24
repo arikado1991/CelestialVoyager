@@ -144,10 +144,11 @@ public class GamePlayManagerScript : MonoBehaviour {
 
 		Image[] stars = popUp.transform.Find ("Stars").GetComponentsInChildren <Image>();
 
-		for (int i = 0; i < 3; i++)
-
-			stars [i].enabled = (i < scoreSystem.starEarned);
-
+		for (int i = 0; i < 3; i++) {
+			Color prev = stars[i].color;
+			stars [i].color = new Color (prev.r, prev.g, prev.b,
+				((i < scoreSystem.starEarned) ? 1f : .2f) );
+		}
 		popUpManager.ShowPopUp ("EndLevelPopUp", true);
 	}
 
