@@ -1,0 +1,1462 @@
+fileFormatVersion: 2
+guid: 9f2b226211993401ba2b9b62c6dc26d4
+timeCreated: 1511396758
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Alienspaceship Animation_0
+    21300002: Alienspaceship Animation_1
+    21300004: Alienspaceship Animation_2
+    21300006: Alienspaceship Animation_3
+    21300008: Alienspaceship Animation_4
+    21300010: Alienspaceship Animation_5
+    21300012: Alienspaceship Animation_6
+    21300014: Alienspaceship Animation_7
+    21300016: Alienspaceship Animation_8
+    21300018: Alienspaceship Animation_9
+    21300020: Alienspaceship Animation_10
+    21300022: Alienspaceship Animation_11
+    21300024: Alienspaceship Animation_12
+    21300026: Alienspaceship Animation_13
+    21300028: Alienspaceship Animation_14
+    21300030: Alienspaceship Animation_15
+    21300032: Alienspaceship Animation_16
+    21300034: Alienspaceship Animation_17
+    21300036: Alienspaceship Animation_18
+    21300038: Alienspaceship Animation_19
+    21300040: Alienspaceship Animation_20
+    21300042: Alienspaceship Animation_21
+    21300044: Alienspaceship Animation_22
+    21300046: Alienspaceship Animation_23
+    21300048: Alienspaceship Animation_24
+    21300050: Alienspaceship Animation_25
+    21300052: Alienspaceship Animation_26
+    21300054: Alienspaceship Animation_27
+    21300056: Alienspaceship Animation_28
+    21300058: Alienspaceship Animation_29
+    21300060: Alienspaceship Animation_30
+    21300062: Alienspaceship Animation_31
+    21300064: Alienspaceship Animation_32
+    21300066: Alienspaceship Animation_33
+    21300068: Alienspaceship Animation_34
+    21300070: Alienspaceship Animation_35
+    21300072: Alienspaceship Animation_36
+    21300074: Alienspaceship Animation_37
+    21300076: Alienspaceship Animation_38
+    21300078: Alienspaceship Animation_39
+    21300080: Alienspaceship Animation_40
+    21300082: Alienspaceship Animation_41
+    21300084: Alienspaceship Animation_42
+    21300086: Alienspaceship Animation_43
+    21300088: Alienspaceship Animation_44
+    21300090: Alienspaceship Animation_45
+    21300092: Alienspaceship Animation_46
+    21300094: Alienspaceship Animation_47
+    21300096: Alienspaceship Animation_48
+    21300098: Alienspaceship Animation_49
+    21300100: Alienspaceship Animation_50
+    21300102: Alienspaceship Animation_51
+    21300104: Alienspaceship Animation_52
+    21300106: Alienspaceship Animation_53
+    21300108: Alienspaceship Animation_54
+    21300110: Alienspaceship Animation_55
+    21300112: Alienspaceship Animation_56
+    21300114: Alienspaceship Animation_57
+    21300116: Alienspaceship Animation_58
+    21300118: Alienspaceship Animation_59
+    21300120: Alienspaceship Animation_60
+    21300122: Alienspaceship Animation_61
+    21300124: Alienspaceship Animation_62
+    21300126: Alienspaceship Animation_63
+    21300128: Alienspaceship Animation_64
+    21300130: Alienspaceship Animation_65
+    21300132: Alienspaceship Animation_66
+    21300134: Alienspaceship Animation_67
+    21300136: Alienspaceship Animation_68
+    21300138: Alienspaceship Animation_69
+    21300140: Alienspaceship Animation_70
+    21300142: Alienspaceship Animation_71
+    21300144: Alienspaceship Animation_72
+    21300146: Alienspaceship Animation_73
+    21300148: Alienspaceship Animation_74
+    21300150: Alienspaceship Animation_75
+    21300152: Alienspaceship Animation_76
+    21300154: Alienspaceship Animation_77
+    21300156: Alienspaceship Animation_78
+    21300158: Alienspaceship Animation_79
+    21300160: Alienspaceship Animation_80
+    21300162: Alienspaceship Animation_81
+    21300164: Alienspaceship Animation_82
+    21300166: Alienspaceship Animation_83
+    21300168: Alienspaceship Animation_84
+    21300170: Alienspaceship Animation_85
+    21300172: Alienspaceship Animation_86
+    21300174: Alienspaceship Animation_87
+    21300176: Alienspaceship Animation_88
+    21300178: Alienspaceship Animation_89
+  externalObjects: {}
+  serializedVersion: 4
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -1
+    wrapU: 1
+    wrapV: 1
+    wrapW: -1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Alienspaceship Animation_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 6750
+        width: 1050
+        height: 750
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Alienspaceship Animation_1
+      rect:
+        serializedVersion: 2
+        x: 1050
+        y: 6750
+        width: 1050
+        height: 750
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Alienspaceship Animation_2
+      rect:
+        serializedVersion: 2
+        x: 2100
+        y: 6750
+        width: 1050
+        height: 750
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Alienspaceship Animation_3
+      rect:
+        serializedVersion: 2
+        x: 3150
+        y: 6750
+        width: 1050
+        height: 750
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Alienspaceship Animation_4
+      rect:
+        serializedVersion: 2
+        x: 4200
+        y: 6750
+        width: 1050
+        height: 750
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Alienspaceship Animation_5
+      rect:
+        serializedVersion: 2
+        x: 5250
+        y: 6750
+        width: 1050
+        height: 750
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Alienspaceship Animation_6
+      rect:
+        serializedVersion: 2
+        x: 6300
+        y: 6750
+        width: 1050
+        height: 750
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Alienspaceship Animation_7
+      rect:
+        serializedVersion: 2
+        x: 7350
+        y: 6750
+        width: 1050
+        height: 750
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Alienspaceship Animation_8
+      rect:
+        serializedVersion: 2
+        x: 8400
+        y: 6750
+        width: 1050
+        height: 750
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Alienspaceship Animation_9
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 6000
+        width: 1050
+        height: 750
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Alienspaceship Animation_10
+      rect:
+        serializedVersion: 2
+        x: 1050
+        y: 6000
+        width: 1050
+        height: 750
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Alienspaceship Animation_11
+      rect:
+        serializedVersion: 2
+        x: 2100
+        y: 6000
+        width: 1050
+        height: 750
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Alienspaceship Animation_12
+      rect:
+        serializedVersion: 2
+        x: 3150
+        y: 6000
+        width: 1050
+        height: 750
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Alienspaceship Animation_13
+      rect:
+        serializedVersion: 2
+        x: 4200
+        y: 6000
+        width: 1050
+        height: 750
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Alienspaceship Animation_14
+      rect:
+        serializedVersion: 2
+        x: 5250
+        y: 6000
+        width: 1050
+        height: 750
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Alienspaceship Animation_15
+      rect:
+        serializedVersion: 2
+        x: 6300
+        y: 6000
+        width: 1050
+        height: 750
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Alienspaceship Animation_16
+      rect:
+        serializedVersion: 2
+        x: 7350
+        y: 6000
+        width: 1050
+        height: 750
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Alienspaceship Animation_17
+      rect:
+        serializedVersion: 2
+        x: 8400
+        y: 6000
+        width: 1050
+        height: 750
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Alienspaceship Animation_18
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 5250
+        width: 1050
+        height: 750
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Alienspaceship Animation_19
+      rect:
+        serializedVersion: 2
+        x: 1050
+        y: 5250
+        width: 1050
+        height: 750
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Alienspaceship Animation_20
+      rect:
+        serializedVersion: 2
+        x: 2100
+        y: 5250
+        width: 1050
+        height: 750
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Alienspaceship Animation_21
+      rect:
+        serializedVersion: 2
+        x: 3150
+        y: 5250
+        width: 1050
+        height: 750
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Alienspaceship Animation_22
+      rect:
+        serializedVersion: 2
+        x: 4200
+        y: 5250
+        width: 1050
+        height: 750
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Alienspaceship Animation_23
+      rect:
+        serializedVersion: 2
+        x: 5250
+        y: 5250
+        width: 1050
+        height: 750
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Alienspaceship Animation_24
+      rect:
+        serializedVersion: 2
+        x: 6300
+        y: 5250
+        width: 1050
+        height: 750
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Alienspaceship Animation_25
+      rect:
+        serializedVersion: 2
+        x: 7350
+        y: 5250
+        width: 1050
+        height: 750
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Alienspaceship Animation_26
+      rect:
+        serializedVersion: 2
+        x: 8400
+        y: 5250
+        width: 1050
+        height: 750
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Alienspaceship Animation_27
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 4500
+        width: 1050
+        height: 750
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Alienspaceship Animation_28
+      rect:
+        serializedVersion: 2
+        x: 1050
+        y: 4500
+        width: 1050
+        height: 750
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Alienspaceship Animation_29
+      rect:
+        serializedVersion: 2
+        x: 2100
+        y: 4500
+        width: 1050
+        height: 750
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Alienspaceship Animation_30
+      rect:
+        serializedVersion: 2
+        x: 3150
+        y: 4500
+        width: 1050
+        height: 750
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Alienspaceship Animation_31
+      rect:
+        serializedVersion: 2
+        x: 4200
+        y: 4500
+        width: 1050
+        height: 750
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Alienspaceship Animation_32
+      rect:
+        serializedVersion: 2
+        x: 5250
+        y: 4500
+        width: 1050
+        height: 750
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Alienspaceship Animation_33
+      rect:
+        serializedVersion: 2
+        x: 6300
+        y: 4500
+        width: 1050
+        height: 750
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Alienspaceship Animation_34
+      rect:
+        serializedVersion: 2
+        x: 7350
+        y: 4500
+        width: 1050
+        height: 750
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Alienspaceship Animation_35
+      rect:
+        serializedVersion: 2
+        x: 8400
+        y: 4500
+        width: 1050
+        height: 750
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Alienspaceship Animation_36
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3750
+        width: 1050
+        height: 750
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Alienspaceship Animation_37
+      rect:
+        serializedVersion: 2
+        x: 1050
+        y: 3750
+        width: 1050
+        height: 750
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Alienspaceship Animation_38
+      rect:
+        serializedVersion: 2
+        x: 2100
+        y: 3750
+        width: 1050
+        height: 750
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Alienspaceship Animation_39
+      rect:
+        serializedVersion: 2
+        x: 3150
+        y: 3750
+        width: 1050
+        height: 750
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Alienspaceship Animation_40
+      rect:
+        serializedVersion: 2
+        x: 4200
+        y: 3750
+        width: 1050
+        height: 750
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Alienspaceship Animation_41
+      rect:
+        serializedVersion: 2
+        x: 5250
+        y: 3750
+        width: 1050
+        height: 750
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Alienspaceship Animation_42
+      rect:
+        serializedVersion: 2
+        x: 6300
+        y: 3750
+        width: 1050
+        height: 750
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Alienspaceship Animation_43
+      rect:
+        serializedVersion: 2
+        x: 7350
+        y: 3750
+        width: 1050
+        height: 750
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Alienspaceship Animation_44
+      rect:
+        serializedVersion: 2
+        x: 8400
+        y: 3750
+        width: 1050
+        height: 750
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Alienspaceship Animation_45
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3000
+        width: 1050
+        height: 750
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Alienspaceship Animation_46
+      rect:
+        serializedVersion: 2
+        x: 1050
+        y: 3000
+        width: 1050
+        height: 750
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Alienspaceship Animation_47
+      rect:
+        serializedVersion: 2
+        x: 2100
+        y: 3000
+        width: 1050
+        height: 750
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Alienspaceship Animation_48
+      rect:
+        serializedVersion: 2
+        x: 3150
+        y: 3000
+        width: 1050
+        height: 750
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Alienspaceship Animation_49
+      rect:
+        serializedVersion: 2
+        x: 4200
+        y: 3000
+        width: 1050
+        height: 750
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Alienspaceship Animation_50
+      rect:
+        serializedVersion: 2
+        x: 5250
+        y: 3000
+        width: 1050
+        height: 750
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Alienspaceship Animation_51
+      rect:
+        serializedVersion: 2
+        x: 6300
+        y: 3000
+        width: 1050
+        height: 750
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Alienspaceship Animation_52
+      rect:
+        serializedVersion: 2
+        x: 7350
+        y: 3000
+        width: 1050
+        height: 750
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Alienspaceship Animation_53
+      rect:
+        serializedVersion: 2
+        x: 8400
+        y: 3000
+        width: 1050
+        height: 750
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Alienspaceship Animation_54
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2250
+        width: 1050
+        height: 750
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Alienspaceship Animation_55
+      rect:
+        serializedVersion: 2
+        x: 1050
+        y: 2250
+        width: 1050
+        height: 750
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Alienspaceship Animation_56
+      rect:
+        serializedVersion: 2
+        x: 2100
+        y: 2250
+        width: 1050
+        height: 750
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Alienspaceship Animation_57
+      rect:
+        serializedVersion: 2
+        x: 3150
+        y: 2250
+        width: 1050
+        height: 750
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Alienspaceship Animation_58
+      rect:
+        serializedVersion: 2
+        x: 4200
+        y: 2250
+        width: 1050
+        height: 750
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Alienspaceship Animation_59
+      rect:
+        serializedVersion: 2
+        x: 5250
+        y: 2250
+        width: 1050
+        height: 750
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Alienspaceship Animation_60
+      rect:
+        serializedVersion: 2
+        x: 6300
+        y: 2250
+        width: 1050
+        height: 750
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Alienspaceship Animation_61
+      rect:
+        serializedVersion: 2
+        x: 7350
+        y: 2250
+        width: 1050
+        height: 750
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Alienspaceship Animation_62
+      rect:
+        serializedVersion: 2
+        x: 8400
+        y: 2250
+        width: 1050
+        height: 750
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Alienspaceship Animation_63
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1500
+        width: 1050
+        height: 750
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Alienspaceship Animation_64
+      rect:
+        serializedVersion: 2
+        x: 1050
+        y: 1500
+        width: 1050
+        height: 750
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Alienspaceship Animation_65
+      rect:
+        serializedVersion: 2
+        x: 2100
+        y: 1500
+        width: 1050
+        height: 750
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Alienspaceship Animation_66
+      rect:
+        serializedVersion: 2
+        x: 3150
+        y: 1500
+        width: 1050
+        height: 750
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Alienspaceship Animation_67
+      rect:
+        serializedVersion: 2
+        x: 4200
+        y: 1500
+        width: 1050
+        height: 750
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Alienspaceship Animation_68
+      rect:
+        serializedVersion: 2
+        x: 5250
+        y: 1500
+        width: 1050
+        height: 750
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Alienspaceship Animation_69
+      rect:
+        serializedVersion: 2
+        x: 6300
+        y: 1500
+        width: 1050
+        height: 750
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Alienspaceship Animation_70
+      rect:
+        serializedVersion: 2
+        x: 7350
+        y: 1500
+        width: 1050
+        height: 750
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Alienspaceship Animation_71
+      rect:
+        serializedVersion: 2
+        x: 8400
+        y: 1500
+        width: 1050
+        height: 750
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Alienspaceship Animation_72
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 750
+        width: 1050
+        height: 750
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Alienspaceship Animation_73
+      rect:
+        serializedVersion: 2
+        x: 1050
+        y: 750
+        width: 1050
+        height: 750
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Alienspaceship Animation_74
+      rect:
+        serializedVersion: 2
+        x: 2100
+        y: 750
+        width: 1050
+        height: 750
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Alienspaceship Animation_75
+      rect:
+        serializedVersion: 2
+        x: 3150
+        y: 750
+        width: 1050
+        height: 750
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Alienspaceship Animation_76
+      rect:
+        serializedVersion: 2
+        x: 4200
+        y: 750
+        width: 1050
+        height: 750
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Alienspaceship Animation_77
+      rect:
+        serializedVersion: 2
+        x: 5250
+        y: 750
+        width: 1050
+        height: 750
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Alienspaceship Animation_78
+      rect:
+        serializedVersion: 2
+        x: 6300
+        y: 750
+        width: 1050
+        height: 750
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Alienspaceship Animation_79
+      rect:
+        serializedVersion: 2
+        x: 7350
+        y: 750
+        width: 1050
+        height: 750
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Alienspaceship Animation_80
+      rect:
+        serializedVersion: 2
+        x: 8400
+        y: 750
+        width: 1050
+        height: 750
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Alienspaceship Animation_81
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 1050
+        height: 750
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Alienspaceship Animation_82
+      rect:
+        serializedVersion: 2
+        x: 1050
+        y: 0
+        width: 1050
+        height: 750
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Alienspaceship Animation_83
+      rect:
+        serializedVersion: 2
+        x: 2100
+        y: 0
+        width: 1050
+        height: 750
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Alienspaceship Animation_84
+      rect:
+        serializedVersion: 2
+        x: 3150
+        y: 0
+        width: 1050
+        height: 750
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Alienspaceship Animation_85
+      rect:
+        serializedVersion: 2
+        x: 4200
+        y: 0
+        width: 1050
+        height: 750
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Alienspaceship Animation_86
+      rect:
+        serializedVersion: 2
+        x: 5250
+        y: 0
+        width: 1050
+        height: 750
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Alienspaceship Animation_87
+      rect:
+        serializedVersion: 2
+        x: 6300
+        y: 0
+        width: 1050
+        height: 750
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Alienspaceship Animation_88
+      rect:
+        serializedVersion: 2
+        x: 7350
+        y: 0
+        width: 1050
+        height: 750
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Alienspaceship Animation_89
+      rect:
+        serializedVersion: 2
+        x: 8400
+        y: 0
+        width: 1050
+        height: 750
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    outline: []
+    physicsShape: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
