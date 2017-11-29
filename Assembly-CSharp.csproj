@@ -52,6 +52,7 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\MeteorScript.cs" />
+     <Compile Include="Assets\MeteorSpawnerScript.cs" />
      <Compile Include="Assets\Scripts\Assets\BackgroundScrollingScript.cs" />
      <Compile Include="Assets\Scripts\Assets\FadeScript.cs" />
      <Compile Include="Assets\Scripts\Assets\LevelManager.cs" />
