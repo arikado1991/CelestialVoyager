@@ -35,10 +35,12 @@ public class WhiteholeScript : MonoBehaviour {
 			
 			if (whiteholeRenderer.color.a >= 1) {
 				appearing = false;
-				spaceShip.GetComponent<Renderer> ().enabled = true;
+				spaceShip.GetComponent<SpriteRenderer> ().enabled = true;
+			
 				//spaceShip.GetComponent<Collider2D> ().enabled = true;
 				spaceShip.GetComponent<Rigidbody2D> ().WakeUp();
 				spaceShip.GetComponent<Rigidbody2D> ().isKinematic = false;
+				spaceShip.GetComponent<SpaceshipMovementScript> ().shipState = SpaceshipMovementScript.ShipState.NORMAL;
 			}
 
 		
@@ -62,6 +64,6 @@ public class WhiteholeScript : MonoBehaviour {
 				whiteholeRenderer.color.g,
 				whiteholeRenderer.color.b,
 				0);
-		spaceShip = GamePlayManagerScript.GetInstance ().player;
+		//spaceShip = GamePlayManagerScript.GetInstance ().player;
 	}
 }

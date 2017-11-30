@@ -44,12 +44,15 @@ public class BlackholeScript : MonoBehaviour {
 			Debug.Log ("Collided with blackhole");
 			spaceShip = col.gameObject;
 			spaceShip.transform.position = transform.position;
-			spaceShip.GetComponent<Renderer> ().enabled = false;
+			spaceShip.GetComponent<SpriteRenderer> ().enabled = false;
+		
 			//spaceShip.GetComponent<Collider2D> ().enabled = true;
 			spaceShip.GetComponent<Rigidbody2D> ().isKinematic = true;
 			spaceShip.GetComponent<Rigidbody2D> ().Sleep();
 			spaceShip.GetComponent<Rigidbody2D> ().velocity = Vector2.zero;
+			spaceShip.GetComponent<SpaceshipMovementScript> ().shipState = SpaceshipMovementScript.ShipState.WARPING;
 			warptime = WARP_TIME;
+
 		
 
 		}

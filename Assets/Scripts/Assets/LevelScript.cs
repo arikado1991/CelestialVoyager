@@ -9,6 +9,7 @@ public class LevelScript : MonoBehaviour
 	public string LevelName;
 
 	public float maxFuel;
+	public float maxTime;
 	public Vector2 startingPosition;
 
 	//3 star condition:

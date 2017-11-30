@@ -6,7 +6,7 @@ public class FlashingScreenScript : MonoBehaviour {
 
 	Image screen;
 	float alpha;
-	float FADE_AMOUNT = .2f;
+	float FADE_AMOUNT = .05f;
 	float fadeRate;
 
 
@@ -14,13 +14,24 @@ public class FlashingScreenScript : MonoBehaviour {
 	void Start () {
 		screen = GetComponent<Image> ();
 		Activate (false);
-		OutOfBoundScript.OutOfBoundEvent += Activate;
+
+		//GameObject.DontDestroyOnLoad (gameObject);
 	}
 
 	void Activate (bool isActivate) {
+		if (screen == null)
+			screen = GetComponent<Image> ();
 		Debug.Log ("Flashing screen activation: " + isActivate);
 		screen.enabled = isActivate;
 		alpha = (isActivate) ? 0 : -10;
+	}
+
+	void OnEnable() {
+		OutOfBoundScript.OutOfBoundEvent += Activate;
+	}
+
+	void OnDisable () {
+		OutOfBoundScript.OutOfBoundEvent -= Activate;
 	}
 
 	// Update is called once per frame

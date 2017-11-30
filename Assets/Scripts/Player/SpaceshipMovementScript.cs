@@ -7,7 +7,10 @@ public class SpaceshipMovementScript : MonoBehaviour {
 	public enum SpaceObjectType {PLANET, SPACEJUNK, METEOR, ALIEN};
 	public enum ExhaustionLevel {NONE, SMALL, LARGE};
 
-
+	public enum ShipState
+	{
+		NORMAL, WARPING
+	};
 
 	public SpaceshipInfoScript shipInfo;
 
@@ -15,6 +18,8 @@ public class SpaceshipMovementScript : MonoBehaviour {
 
 	public static event EventManagerScript.GetValueDelegate <Vector2> OnForceAppliedEvent;
 
+
+	public ShipState shipState;
 
 	// Use this for initialization
 	void Start () {
@@ -38,6 +43,7 @@ public class SpaceshipMovementScript : MonoBehaviour {
 		Rigidbody2D rigidBody = GetComponent<Rigidbody2D> ();
 		ShipAnimationController shipAnimationController = GetComponent <ShipAnimationController> ();
 
+			
 		if (Input.GetMouseButton (0)) {
 
 			Vector2 mousePositionInGame = new Vector2 (
@@ -71,8 +77,12 @@ public class SpaceshipMovementScript : MonoBehaviour {
 //			OnForceAppliedEvent (thruster_force);
 			shipInfo.fuel -= thruster_force.magnitude * Time.deltaTime * GameOptionsScript.FUEL_USAGE_MULTIPLIER;
 
-			shipAnimationController.ChangeExhaustionFireAnimation (
-				(thruster_force.magnitude < GameOptionsScript.MAX_VELOCITY) ? ExhaustionLevel.SMALL : ExhaustionLevel.LARGE);
+			shipAnimationController.ChangeExhaustionFireAnimation ( 
+				(shipState == ShipState.WARPING) ? ExhaustionLevel.NONE :
+
+					( (thruster_force.magnitude < GameOptionsScript.MAX_VELOCITY) 
+					? ExhaustionLevel.SMALL : ExhaustionLevel.LARGE) 
+			);
 
 			SoundManagerScript.GetInstance ().PlaySound ("Rocket Flying", transform.position, 0.6f + thruster_force.magnitude / GameOptionsScript.MAX_VELOCITY, false);
 

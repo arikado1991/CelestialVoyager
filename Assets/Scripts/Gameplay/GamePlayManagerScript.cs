@@ -18,6 +18,19 @@ public class GamePlayManagerScript : MonoBehaviour {
 		return s_gameplayMangager;
 	}
 
+	public GameObject flashingScreen;
+
+	string[] tips = {
+		"Tap in the opposite direction of your ship's to better slow it down.",
+		"The planet pull force gets stronger the closer you get to it.",
+		"Wormholes can get you closer to the destination, or not ...",
+		"The further from the ship you tap, the faster it accelerates and more fuel uses, too",
+		"Use less fuel and finish level faster for more stars",
+		"Look for signs of meteor showers before it's too late"
+	};
+
+		
+
 	// related events
 //	public static event EventManagerScript.GameDelegate OnGameOverEvent;
 	public static event EventManagerScript.GameDelegate OnGameRestartEvent;
@@ -35,6 +48,8 @@ public class GamePlayManagerScript : MonoBehaviour {
 
 		SceneManager.sceneLoaded += AtNewLevel;
 
+
+
 	}
 
 
@@ -49,7 +64,7 @@ public class GamePlayManagerScript : MonoBehaviour {
 		if (player == null)
 			player = GameObject.FindGameObjectWithTag ("Player");
 
-	
+//		GameObject.Find ("RestartButton").GetComponent<Button> ().onClick.AddListener (Restart);
 
 		PopUpScript popUp = popUpManager.CreatePopUp (PopUpManagerScript.PopUpType.BEGINLEVEL, "GreetingPopUp").GetComponent<PopUpScript> ();
 		popUp.SetDimension (1f, 1f);
@@ -83,6 +98,9 @@ public class GamePlayManagerScript : MonoBehaviour {
 		timer = GameObject.FindObjectOfType <TimerScript> ();
 		scoreSystem = GameObject.FindObjectOfType <EndLevelScoreSystemScript> ();
 		levelInfo = GameObject.FindObjectOfType <LevelScript>();
+
+
+
 		BeginLevelBrief ();
 
 
@@ -97,12 +115,14 @@ public class GamePlayManagerScript : MonoBehaviour {
 	void OnEnable(){
 		SpaceshipInfoScript.OnFuelEmptyEvent += GameOver;
 		FinishedPlanetScript.OnReachingDestinationEvent += FinishLevel;
+		TimerScript.OutOfTimeEvent += GameOver;
 
 	}
 
 	void OnDisable() {
 		SpaceshipInfoScript.OnFuelEmptyEvent -= GameOver;
 		FinishedPlanetScript.OnReachingDestinationEvent -= FinishLevel;
+		TimerScript.OutOfTimeEvent -= GameOver;
 	}
 
 
@@ -125,6 +145,8 @@ public class GamePlayManagerScript : MonoBehaviour {
 
 	public void GameOver() {
 		ActivateGamePlay (false);
+		//PopUpScript popUp = popUpManager.GetPopUp ("GameOverPopUp").GetComponent<PopUpScript> ();
+		//popUp.GetContent ("Message").GetComponent<Text> ().text = "You have been fired from NASA." + tips [Random.Range (0, tips.Length)];
 		popUpManager.ShowPopUp ("GameOverPopUp", true);
 
 

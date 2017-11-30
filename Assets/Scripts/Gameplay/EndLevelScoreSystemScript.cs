@@ -34,8 +34,8 @@ public class EndLevelScoreSystemScript : MonoBehaviour {
 		float completionTime = gameManager.timer.time;
 
 		starEarned = 1
-			+ ((remainingFuel > levelInfo.fuel2star && completionTime < levelInfo.time2star) ? 1 : 0)
-			+ ((remainingFuel > levelInfo.fuel3star && completionTime < levelInfo.time3star) ? 1 : 0);
+			+ ((remainingFuel > levelInfo.fuel2star && completionTime > levelInfo.time2star) ? 1 : 0)
+			+ ((remainingFuel > levelInfo.fuel3star && completionTime > levelInfo.time3star) ? 1 : 0);
 
 		p_endLevelScore = Mathf.Max (0,
 			(int) (gameManager.player.GetComponent <SpaceshipInfoScript>().fuel * 10
