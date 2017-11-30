@@ -51,8 +51,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\BlackholeScript.cs" />
      <Compile Include="Assets\MeteorScript.cs" />
      <Compile Include="Assets\MeteorSpawnerScript.cs" />
+     <Compile Include="Assets\MeteorTriggerScript.cs" />
+     <Compile Include="Assets\OutOfBoundScript.cs" />
      <Compile Include="Assets\Scripts\Assets\BackgroundScrollingScript.cs" />
      <Compile Include="Assets\Scripts\Assets\FadeScript.cs" />
      <Compile Include="Assets\Scripts\Assets\LevelManager.cs" />
@@ -89,6 +92,7 @@
      <Compile Include="Assets\Scripts\UI\PopUpManagerScript.cs" />
      <Compile Include="Assets\Scripts\UI\PopUpScript.cs" />
      <Compile Include="Assets\Scripts\UI\TimerScript.cs" />
+     <Compile Include="Assets\WhiteholeScript.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

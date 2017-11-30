@@ -14,11 +14,12 @@ public class DamageUponCollisionScript : MonoBehaviour {
 			(col.gameObject.transform.position - transform.position).normalized 
 			* REPELLING_FORCE_MAGNITUDE, ForceMode2D.Impulse);
 			
+		if (col.contacts.Length > 0) {
+			object[] parameters = { "Explosion", col.contacts [0].point };
+			GameEffectManagerScript.GetInstance ().CreateEffect (2, parameters);
+			SoundManagerScript.GetInstance ().PlaySound ("Explosion", col.contacts[0].point);
+		}
 
-		object[] parameters = { "Explosion", col.contacts [0].point };
-		GameEffectManagerScript.GetInstance().CreateEffect (2, parameters);
-
-		SoundManagerScript.GetInstance ().PlaySound ("Explosion", col.contacts[0].point);
 		if (col.gameObject.CompareTag("Player")) {
 			SpaceshipInfoScript spaceShip = col.gameObject.GetComponent <SpaceshipInfoScript> ();
 			spaceShip.fuel -= damage;
@@ -27,6 +28,6 @@ public class DamageUponCollisionScript : MonoBehaviour {
 		if (destroyUponImpact)
 			GameObject.Destroy (gameObject);
 
-		Debug.Log ("Collided");
+
 	}
 }

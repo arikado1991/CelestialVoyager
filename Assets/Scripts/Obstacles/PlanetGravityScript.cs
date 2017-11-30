@@ -34,14 +34,16 @@ public class PlanetGravityScript : MonoBehaviour {
 	}
 
 	void OnCollisionEnter2D (Collision2D col){
-		if (GetComponent<FinishedPlanetScript> () == null) {
+		if (GetComponent<FinishedPlanetScript> () == null && GetComponent <BlackholeScript> () == null) {
 
 			//OnExplosiveContactEvent (col.gameObject.transform.position);
-
-			object[] parameters = { "Explosion", col.contacts [0].point };
-			GameEffectManagerScript.GetInstance().CreateEffect (2, parameters);
+			if (col.contacts.Length > 0) {
+				object[] parameters = { "Explosion", col.contacts [0].point };
+				GameEffectManagerScript.GetInstance ().CreateEffect (2, parameters);
+			}
 				//if (pt != null)
-			OnSpaceshipCollisionWithPlanetEvent ();
+			if (col.gameObject.CompareTag ("Player"))
+				OnSpaceshipCollisionWithPlanetEvent ();
 			//StartCoroutine ("KillShip");
 		}
 	}

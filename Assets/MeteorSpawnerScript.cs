@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class MeteorSpawnerScript : MonoBehaviour {
 
-	const float METEOR_SHOWER_LIFE_TIME = 3f;
+	const float METEOR_SHOWER_LIFE_TIME = 2.5f;
 	const float METEOR_SPAWN_RATE = .5f;
-	const float SPAWN_LOCATION_HORIZONTAL_MARGIN = 12f;
-	const float SPAWN_LOCATION_VERTICAL_DISTANCE = 10f;
+	const float SPAWN_LOCATION_HORIZONTAL_MARGIN = 18f;
+	const float SPAWN_LOCATION_VERTICAL_DISTANCE = 15f;
 	const float METEOR_SPEED = 20f;
-	const float WARNING_TIME = 2.5f;
+	const float WARNING_TIME = 2f;
 	const float NO_METEOR_TIME = 10f;
 
 	public enum MeteorShowerState {INACTIVE, PEACEFUL, WARNING, SHOWER};
@@ -108,15 +108,16 @@ public class MeteorSpawnerScript : MonoBehaviour {
 
 
 		Vector3 playerPosition = GamePlayManagerScript.GetInstance ().player.transform.position;
-		newMeteor.transform.localPosition = playerPosition
-			+ new Vector3 (
-				(Random.Range (0, 1) * 2 - 1) * Random.value * SPAWN_LOCATION_HORIZONTAL_MARGIN, 
-				SPAWN_LOCATION_VERTICAL_DISTANCE,
-				( (isWarningShot) ? 9.5f : 0) 
-			);
+		newMeteor.transform.position = playerPosition + Vector3.forward * ( (isWarningShot) ? 3f : 0) ;
+
+		newMeteor.transform.localPosition += new Vector3 (
+			(Random.Range (0, 1) * 2 - 1) * Random.value * SPAWN_LOCATION_HORIZONTAL_MARGIN,
+			SPAWN_LOCATION_VERTICAL_DISTANCE,
+			0);
+
 
 		if (isWarningShot) {
-			newMeteor.transform.localScale *= .5f;
+			newMeteor.transform.localScale *= .25f;
 			newMeteor.GetComponent<Collider2D> ().enabled = false;
 		}
 	
