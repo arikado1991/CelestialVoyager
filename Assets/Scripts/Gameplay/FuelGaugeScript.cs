@@ -10,7 +10,7 @@ public class FuelGaugeScript: MonoBehaviour {
 		return s_fuelGauge;
 	}
 
-
+	LevelScript levelInfo;
 
 	Slider fuelBar;
 
@@ -40,6 +40,9 @@ public class FuelGaugeScript: MonoBehaviour {
 		}
 	}
 
+	void Start() {
+		levelInfo = GamePlayManagerScript.GetInstance().levelInfo;
+	}
 
 	public void SetMaxFuelBar (float newMaxFuel) {
 		fuelBar.maxValue = newMaxFuel;
@@ -52,11 +55,11 @@ public class FuelGaugeScript: MonoBehaviour {
 		Color barColor = Color.green;
 		if (newFuelAmount == 0)
 			barColor = Color.clear;
-		else if (newFuelAmount < 10)
+		else if (newFuelAmount < 120)
 			barColor = Color.red;
-		else if (newFuelAmount < 25)
+		else if (newFuelAmount < levelInfo.fuel2star)
 			ColorUtility.TryParseHtmlString("#FF9400FF", out barColor);
-		else if (newFuelAmount < 50)
+		else if (newFuelAmount < levelInfo.fuel3star)
 			barColor = Color.yellow;
 		
 		

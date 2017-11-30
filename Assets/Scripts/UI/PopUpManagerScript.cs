@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class PopUpManagerScript : MonoBehaviour {
 
 
-	public enum PopUpType {MESSAGE, ENDGAMERANKING
+	public enum PopUpType {BEGINLEVEL, GAMEOVER, ENDGAMERANKING
 
 	};
 
@@ -70,11 +70,14 @@ public class PopUpManagerScript : MonoBehaviour {
 		string prefabKey = "";
 
 		switch (popUpType) {
-		case PopUpType.MESSAGE:
-			prefabKey = "1Title1Message3ButtonMaxPopUp";
+		case PopUpType.GAMEOVER:
+			prefabKey = "GameoverPopup";
+			break;
+		case PopUpType.BEGINLEVEL:
+			prefabKey = "BeginLevelPopup";
 			break;
 		case PopUpType.ENDGAMERANKING:
-			prefabKey = "EndLevelPopUp";
+			prefabKey = "EndLevelPopup";
 			break;
 		default:
 			prefabKey = "";

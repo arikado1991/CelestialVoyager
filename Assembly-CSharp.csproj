@@ -52,6 +52,7 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\BlackholeScript.cs" />
+     <Compile Include="Assets\FlashingScreenScript.cs" />
      <Compile Include="Assets\MeteorScript.cs" />
      <Compile Include="Assets\MeteorSpawnerScript.cs" />
      <Compile Include="Assets\MeteorTriggerScript.cs" />

@@ -10,7 +10,6 @@ public class TimerScript : MonoBehaviour {
 	Text timerDisplayText;
 	// Use this for initialization
 
-
 	void Start () {
 		timerDisplayText = transform.Find("TimerDisplayText").GetComponent<Text> ();
 	

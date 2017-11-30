@@ -5,7 +5,7 @@ using UnityEngine;
 public class BlackholeScript : MonoBehaviour {
 
 	public GameObject whiteHole;
-	public GameObject spaceShip;
+	GameObject spaceShip;
 
 	const float WARP_TIME = 3f;
 	const float WHITEHOLE_APPEAR_CUE = .5f;
@@ -18,6 +18,7 @@ public class BlackholeScript : MonoBehaviour {
 	void Start () {
 		warpingVelocity = (whiteHole.transform.position - transform.position) / WARP_TIME;
 		warptime = 0;
+		whiteHole = transform.Find ("Whitehole").gameObject;
 	}
 	
 	// Update is called once per frame

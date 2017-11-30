@@ -51,16 +51,16 @@ public class GamePlayManagerScript : MonoBehaviour {
 
 	
 
-		PopUpScript popUp = popUpManager.CreatePopUp (PopUpManagerScript.PopUpType.MESSAGE, "GreetingPopUp").GetComponent<PopUpScript> ();
+		PopUpScript popUp = popUpManager.CreatePopUp (PopUpManagerScript.PopUpType.BEGINLEVEL, "GreetingPopUp").GetComponent<PopUpScript> ();
 		popUp.SetDimension (1f, 1f);
 		popUp.GetContent ("Title").GetComponent<Text>().text = "Welcome";
 	
-		popUp.GetContent ("Message").GetComponent<Text>().text = "Are you ready to explore the cosmos and beyond?";
+		popUp.GetContent ("Title").GetComponent<Text>().text = "Are you ready to explore the cosmos and beyond?";
 		ButtonPanelScipt buttonPanel = popUp.GetContent("ButtonPanelPrefab").GetComponent <ButtonPanelScipt> ();
 		buttonPanel.SetButton  (0, "Um ... no??", Restart);
 		buttonPanel.EvenlyPlaceButton ();
 
-		popUp = popUpManager.CreatePopUp (PopUpManagerScript.PopUpType.MESSAGE, "GameOverPopUp").GetComponent<PopUpScript> ();
+		popUp = popUpManager.CreatePopUp (PopUpManagerScript.PopUpType.GAMEOVER, "GameOverPopUp").GetComponent<PopUpScript> ();
 		popUp.SetDimension (1f, 1f);
 		popUp.GetContent ("Title").GetComponent<Text>().text = "Out of fuel!";
 		popUp.GetContent ("Message").GetComponent<Text>().text = "You have been fired from NASA.";
